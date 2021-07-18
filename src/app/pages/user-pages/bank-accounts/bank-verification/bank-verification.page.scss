@@ -1,0 +1,59 @@
+.head_tool{
+    --background: #4CAF50;
+  }
+  ion-menu-button{
+    --color: #fff;
+  }
+  .notif, .sear{
+    font-size: 30px;
+    margin-right: 5px;
+    color: #fff;
+  }
+  ion-back-button{
+      --color: #fff;
+  }
+  p{
+      font-family: 'productsansmedium';
+      letter-spacing: 1px;
+      color: #3d905b;
+  }
+  img{
+    width: 84px;
+    display: inline-block;
+  }
+  .sub-head p{
+    margin: 10px 0; 
+    font-size: 14px;
+  }
+  .sub-head{
+    background: url(../../../../../assets/media/bg/15.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.check_dat{
+    font-size: 12px;
+    color: #575757;
+}
+  .check_amt{
+    color: #000;
+  }
+ .ios .check_amt{
+    margin-bottom: 8px;
+  }
+  .check_paye{
+      width: 50%;
+      color: #000;
+      display: inline-block;
+  }
+  .check_accnt{
+      width: 50%;
+      color: #000;
+      display: inline-block;
+      text-align: right;
+  }
+  ion-chip{
+      font-weight: 500;
+  }

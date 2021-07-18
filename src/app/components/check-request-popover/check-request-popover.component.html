@@ -1,0 +1,5 @@
+
+<ion-list>
+  <ion-item  (click)="checkRequestPageRef.presentResendConfirm(requestId);checkRequestPageRef.popoverController.dismiss()" [disabled]="requestStatus==3"><ion-icon name="send" ></ion-icon>Resent Link</ion-item>
+  <ion-item  (click)="checkRequestPageRef.presentDeleteConfirm(requestId);checkRequestPageRef.popoverController.dismiss()"  lines="none" ><ion-icon name="trash"></ion-icon>Delete</ion-item>
+</ion-list> 

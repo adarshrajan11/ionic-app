@@ -1,0 +1,57 @@
+.head_tool{
+    --background: #4CAF50;
+  }
+  ion-menu-button{
+    --color: #fff;
+  }
+  .notif, .sear{
+    font-size: 30px;
+    margin-right: 5px;
+    color: #fff;
+  }
+  ion-back-button{
+      --color: #fff;
+  }
+  p{
+      font-family: 'productsansmedium';
+      letter-spacing: 1px;
+      color: #3d905b;
+  }
+  img{
+    width: 84px;
+    display: inline-block;
+  }
+  .sub-head p{
+    margin: 10px 0; 
+    font-size: 14px;
+  }
+  .slide-opt{
+      font-size: 24px;
+      padding-right: 5px;
+  }
+  .sub-head{
+      background: url(../../../../../assets/media/bg/15.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      text-align: center;
+      font-size: 16px;
+      text-transform: uppercase;
+  }
+.check_model_img{
+    width: 100%;
+}
+ion-card{
+  width: 100%;
+}
+ion-card-content{
+    padding: 0;
+}
+ion-card-title{
+    background: rgb(10, 77, 133);
+    font-size: 14px;
+    font-family: 'productsansregular';
+    text-align: center;
+    padding: 10px 3px;
+    color: #fff;
+    letter-spacing: 1px;
+}

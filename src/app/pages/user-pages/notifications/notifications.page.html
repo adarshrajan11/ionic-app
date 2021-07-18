@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center   >
+      <img src="../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+    <!-- <ion-buttons slot="end">
+      <ion-icon class="sear" name="search"></ion-icon>
+    </ion-buttons> -->
+    <ion-buttons slot="end">
+      <ion-icon class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <div class="sub-head">
+    <p>Notifications</p>
+  </div>
+<ion-content>
+  <ion-item>
+    <ion-icon class="notify_icon" name="ribbon"></ion-icon>
+    <div class="notif-text">
+      <p class="note">You have no new notifications.</p>
+    </div>
+  </ion-item>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Just a second...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,47 @@
+
+<ion-content padding>
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <img src="../../../../assets/media/bg/logo_ocw.png"/>
+          </div>
+          <div padding>
+            <ion-text color="primary">
+              <h3>Verifying your email?</h3>
+              <p>We have sent an OTP on your email </p>
+            </ion-text>
+            <ion-row text-center>
+              <ion-col>
+               <ion-input #otp1 maxLength="1" [(ngModel)]="otpCode1" (keyup)="otpController($event,otp2,'')">
+               </ion-input>
+               <ion-input #otp2 maxLength="1" [(ngModel)]="otpCode2" (keyup)="otpController($event,otp3,otp1)">
+               </ion-input>
+               <ion-input #otp3 maxLength="1" [(ngModel)]="otpCode3" (keyup)="otpController($event,otp4,otp2)">
+               </ion-input>
+               <ion-input #otp4 maxLength="1" [(ngModel)]="otpCode4" (keyup)="otpController($event,otp5,otp3)">
+               </ion-input>
+               <ion-input #otp5 maxLength="1" [(ngModel)]="otpCode5" (keyup)="otpController($event,otp6,otp4)">
+              </ion-input>
+              <ion-input #otp6 maxLength="1" [(ngModel)]="otpCode6" (keyup)="otpController($event,'',otp5)">
+              </ion-input>
+              </ion-col>
+            </ion-row>  
+            <ion-row text-center>  
+              <div class="text-center" text-center>
+            Not received your code?<a (click)="sendOtp()">
+              Resend Code</a>
+              </div>
+            </ion-row>
+          </div>
+          <div padding>
+            <ion-button (click)="submit()" type="submit" 
+            [disabled]="loading || !( this.otpCode1 && this.otpCode2 && this.otpCode3 && this.otpCode4 && this.otpCode5 && this.otpCode6 ) ">
+            <ion-spinner class="sm-spinner" *ngIf="loading" ></ion-spinner>{{ loading ? "Validating OTP" : "Submit" }}</ion-button>
+            <ion-button routerLink='/login' type="submit" >Cancel</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
+

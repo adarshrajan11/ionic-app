@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center>
+      <img src="../../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+
+    <ion-buttons slot="end">
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div class="sub-head">
+  <p>User Profile</p>
+</div>
+<ion-list>
+  <ion-item lines="none" class="ion-no-padding">
+    <div class="profile_img">
+      <div class="posi_cont">
+        <img src="../../../../../assets/media/users/user1.jpg"/>
+        <ion-input type="file" id="prof_upload" ></ion-input>
+        <span class="material-icons imag_upload_clas">create</span>
+      </div>
+      <p class="name_tag">User Name</p>
+      <p class="company_name_tag">Company Name</p>
+    </div>
+  </ion-item>
+</ion-list>
+
+<ion-content>
+  <ion-list class="seg_name_list">
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="user">
+        User Profile
+      </ion-segment-button>
+      <ion-segment-button value="card">
+        Company Profile
+      </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="segment">
+      <ion-list *ngSwitchCase="'user'">
+        <ion-item>
+          <ion-label>Full Name<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text"  placeholder="full name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Nick Name<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text"  placeholder="nick name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Email<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="email"  placeholder="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Phone No<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="tel"  placeholder="phone number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Address Line 1<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text"  placeholder="address line 1"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Address Line 2<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text"  placeholder="address line 2"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>City<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text" placeholder="city"  ></ion-input>
+          <ion-label>State<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text" placeholder="state" ></ion-input>
+          <ion-label>Zip<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text" placeholder="zip"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Country<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text" placeholder="country"  ></ion-input>
+          <ion-label>Date<ion-text color="danger">*</ion-text></ion-label>
+          <ion-datetime placeholder="--Select Date--" displayFormat="MM/DD/YYYY"></ion-datetime>
+        </ion-item>
+        <ion-button expand="full" type="submit" color="primary" class="ion-no-margin updt_btn_usr_prf">UPDATE</ion-button>
+        
+      </ion-list>
+      <ion-list *ngSwitchCase="'card'">
+        <ion-item>
+          <ion-label>Default Printing Style</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="f">Female</ion-select-option>
+            <ion-select-option value="m">Male</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Time Zone</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="f">Female</ion-select-option>
+            <ion-select-option value="m">Male</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Serial Number Formatting on Checks</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="f">Female</ion-select-option>
+            <ion-select-option value="m">Male</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Amount</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="f">Female</ion-select-option>
+            <ion-select-option value="m">Male</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Payee Name Formatting on Checks</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="f">Female</ion-select-option>
+            <ion-select-option value="m">Male</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Amount in Text (Word) format on checks</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="f">Female</ion-select-option>
+            <ion-select-option value="m">Male</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button expand="full" type="submit" color="primary" class="ion-no-margin updt_btn_usr_prf">UPDATE</ion-button>
+
+      </ion-list>
+    </div>
+
+  </ion-list>
+</ion-content>

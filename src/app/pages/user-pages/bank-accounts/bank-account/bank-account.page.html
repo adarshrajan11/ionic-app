@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center>
+      <img src="../../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+
+    <!-- <div class="">
+      <ion-icon name="add"></ion-icon>
+    </div> -->
+
+    <ion-buttons slot="end">
+      <ion-icon routerLink='/tabs/check-model' class="notif" name="add"></ion-icon>
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <div class="sub-head">
+    <p>Bank Account list</p>
+  </div>
+  <ion-toolbar>
+    <ion-searchbar (ionChange)="searchBankAccount($event)"   debounce="300"  [(ngModel)]="searchQuery" animated></ion-searchbar>
+  </ion-toolbar>
+  
+<ion-content>
+  <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+  <ion-list>
+    <ion-item *ngIf="bankAccounts.length==0&&!showLoadingSpinner" >
+      <ion-label style="text-align: center;">No items.</ion-label>
+   </ion-item>
+    <!-- Sliding item with text options on both sides -->
+    <ion-item-sliding *ngFor="let bankAccount of bankAccounts">
+      <ion-item >
+        <ion-label>
+          <div class="sub_details">
+            <p class="check_amt">{{bankAccount.nickName!='' ? bankAccount.nickName : bankAccount.nickName }}</p>
+            <p style="display: block;" class="check_dat">{{bankAccount.Accountnumber}}</p>
+          </div>
+        </ion-label>
+        <ion-chip *ngIf="bankAccount.verified!=1" color="danger" [routerLink]="['/bank-verification/bank-verification-step2', {bankAccount:bankAccount.id}]" >
+          <ion-label color="danger">verify now</ion-label>
+        </ion-chip>
+          <!-- <ion-icon *ngIf="bankAccount.verified==1" name="checkmark-circle" style="color:green"></ion-icon> -->
+           <ion-buttons slot="end">
+            <ion-button (click)=presentPopover($event,bankAccount);>
+              <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+          </ion-buttons> 
+      </ion-item>
+
+      <!-- <ion-item-options side="end">
+        <ion-item-option color="tertiary" expandable>
+          <ion-icon class="slide-opt" name="create"></ion-icon>
+          Edit
+        </ion-item-option>
+        <ion-item-option color="danger" expandable>
+          <ion-icon class="slide-opt" name="trash"></ion-icon>
+          Delete
+        </ion-item-option>
+      </ion-item-options> -->
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" *ngIf="false">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Load more bankaccounts..">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

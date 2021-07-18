@@ -1,0 +1,47 @@
+<ion-content padding>
+  <form [formGroup]="registerForm" autocomplete="off">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <img src="../../assets/media/bg/logo_ocw.png"/>
+            <p class="help">Create your account. <a target="_blank" href="https://support.onlinecheckwriter.com/portal/en/kb/articles/how-to-sign-up">Learn more</a></p>
+          </div>
+            <div padding>
+              <ion-item lines="none">
+                <ion-input type="text" placeholder="First Name" formControlName="name"></ion-input>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-input name="email" type="email" placeholder="Email" formControlName="username" autocomplete="off"></ion-input>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-input name="password" type="password" placeholder="Password" formControlName="password" autocomplete="off"></ion-input>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-input name="password" type="password" placeholder="Confirm Password" formControlName="confirmPassword" autocomplete="off"></ion-input>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-input name="phone" type="tel" placeholder="Phone Number" formControlName="phone"></ion-input>
+              </ion-item>
+              <!-- <ion-item lines="none">
+                <ion-input name="text" type="text" placeholder="Coupon Code" formControlName="couponCode"></ion-input>
+              </ion-item> -->
+              <div class="check_box">
+                <ion-checkbox color="primary" formControlName="agree"></ion-checkbox>
+                <ion-label>You agree to our<a target="_blank" href="https://onlinecheckwriter.com/terms-of-use/"> Terms & Conditions.</a> You have read and acknowledge our <a target="_blank" href="https://onlinecheckwriter.com/privacy-policy/">Privacy Statement.</a></ion-label>
+              </div>
+            </div>
+            <div padding>
+              <ion-button type="submit" [disabled]="isAgreed()" (click)="submit()">Register<ion-spinner class="sm-spinner" *ngIf="loading" ></ion-spinner></ion-button>
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-row text-center>
+    <div class="text-center" text-center>
+        Already have a account?<a routerLink='/login'> Login</a>
+        <a class="site_link" target="_blank" href="https://onlinecheckwriter.com/">www.onlinecheckwriter.com</a>
+    </div>
+  </ion-row>
+</ion-content>

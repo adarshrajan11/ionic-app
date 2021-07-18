@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center>
+      <img src="../../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+
+    <!-- <div class="">
+      <ion-icon name="add"></ion-icon>
+    </div> -->
+
+    <ion-buttons slot="end">
+      <ion-icon routerLink='/tabs/add-payee' class="notif" name="add"></ion-icon>
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <div class="sub-head">
+    <p>Payee List</p>
+  </div>
+  <ion-toolbar>
+    <ion-searchbar animated (ionChange)="searchPayee($event)" debounce="300" [(ngModel)]="searchQuery"    ></ion-searchbar>
+  </ion-toolbar>
+  
+ <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content ></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+
+  <!-- <div class="add_button">
+    <ion-button class="add_button1" routerLink='/add-payee' expand="full">Add New Payee</ion-button>
+  </div> -->
+  <ion-list>
+    <ion-item *ngIf="payees.length==0&&!showLoadingSpinner" >
+      <ion-label style="text-align: center;">No items.</ion-label>
+   </ion-item>
+    <!-- Sliding item with text options on both sides -->
+    <ion-item-sliding *ngFor="let payee of payees">
+      <ion-item >
+        <ion-label>
+          <div class="sub_details">
+            <p class="check_amt">{{payee.name }}</p>
+            <p style="display: block;" class="check_dat">{{payee.nickName}}</p>
+          </div>
+          <!-- <div class="sub_details">
+            <p class="check_paye">Payee Name</p>
+            <p class="check_accnt">Account Name</p>
+          </div> -->
+        </ion-label>
+          <!-- <ion-label>Primary Note</ion-label> -->
+          <ion-buttons slot="end">
+            <!-- <ion-button (click)="delete($event,payee)"> -->
+              <ion-button (click)="presentPopover($event,payee)">
+              <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="tertiary" expandable  [routerLink]="['/tabs/add-payee',payee]" routerDirection="forward">
+          <ion-icon class="slide-opt" name="create"></ion-icon>
+          Edit
+        </ion-item-option>
+        <ion-item-option color="danger"  [disabled]="deleting"  (click)="presentDeleteConfirm(payee)" expandable>
+          <ion-icon class="slide-opt" name="trash"></ion-icon>
+          {{ deleting ? "Deleting..." : "Delete" }}
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Load more payees..">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

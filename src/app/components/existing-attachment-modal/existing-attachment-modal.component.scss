@@ -1,0 +1,58 @@
+ion-item{
+    font-size: 14px;
+    font-family: 'productsansregular';
+}
+ion-title{
+    font-size: 14px;
+    font-family: "productsansmedium";
+    text-transform: uppercase;
+    color: #fff;
+}
+ion-toolbar{
+    --background: #4CAF50;
+    letter-spacing: 1px;
+}
+.modal_form_btn{
+    padding-top: 30px;
+}
+.modal_form_btn ion-button{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'productsansmedium';
+}
+ion-button{
+    font-family: 'productsansmedium';
+}
+ion-checkbox{
+    margin-right: 20px;
+    position: relative;
+}
+.attach_head{
+    --background: #f5f5f5;
+}
+.attach_head ion-label{
+    font-size: 14px;
+    font-family: 'productsansmedium';
+    color: rgb(36, 36, 36);
+    letter-spacing: 1px;
+}
+ion-list{
+    padding: 0;
+}
+.attach_list ion-label{
+    font-size: 14px;
+    font-family: 'productsansregular';
+    color: rgb(58, 58, 58);
+    letter-spacing: 1px;
+}
+.modal_form_btn{
+    padding-top: 30px;
+}
+.modal_form_btn ion-button{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'productsansmedium';
+}
+ion-content{
+    --padding-top: 20px;
+}

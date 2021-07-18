@@ -1,0 +1,63 @@
+<ion-header>
+	<ion-toolbar>
+    <ion-title>Approve a Check Request</ion-title>
+    <ion-buttons fill="outline" slot="end">
+			<ion-button color="dark" (click)="dismiss()">
+				Close
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    
+    <ion-item>
+      <ion-label>Pay to: </ion-label>
+      <ion-input [(ngModel)]="approvalProcessData.payToName"  readonly type="text" placeholder="Payee"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Bank Account<ion-text color="danger">*</ion-text></ion-label>
+      <ionic-selectable [(ngModel)]="approvalProcessData.bankAccount" name="bankAccount" style="font-size: 13px; height:40px;"  item-content [items]="bankAccounts"
+          placeholder="--Select Bank Account--" (onChange)="onChangeBankAccount($event)" itemValueField="id" itemTextField="name" [canSearch]="true">
+     </ionic-selectable>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Check No:</ion-label>
+      <ion-input [(ngModel)]="approvalProcessData.checkSerialNo" name="checkSerialNo" type="number" placeholder="Check Number" ></ion-input>
+      <ion-label>Date<ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime [(ngModel)]="approvalProcessData.checkIssueDate" name="checkIssueDate"  placeholder="--Select Date--" displayFormat="MM/DD/YYYY"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Category<ion-text color="danger">*</ion-text></ion-label>
+      <ionic-selectable [(ngModel)]="approvalProcessData.category" name="category"  style="font-size: 13px; height:40px;"  item-content [items]="categories"
+      placeholder="--Select Category--"  (onSearch)="onSearchCategory($event)" itemValueField="id" itemTextField="name" [canSearch]="true">
+      </ionic-selectable>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Amount<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input [(ngModel)]="approvalProcessData.amount" [readonly]="!approvalProcessData.isEditable" name="amount"  type="tel" placeholder="Amount" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Inv# if any</ion-label>
+      <ion-input [(ngModel)]="approvalProcessData.invoiceNo"  name="invoiceNo"  type="text" placeholder="Invoice"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Note</ion-label>
+      <ion-input type="text" [(ngModel)]="approvalProcessData.note"  name="note" placeholder="note"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Memo</ion-label>
+      <ion-input [(ngModel)]="approvalProcessData.memo" [readonly]="!approvalProcessData.isEditable"  name="memo" type="text" placeholder="Memo"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button class="sub_btn_regst_check" expand="full" (click)="submitApproval()">Approve & Send</ion-button>
+</ion-content>

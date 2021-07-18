@@ -1,0 +1,45 @@
+<ion-header>
+	<ion-toolbar>
+    <ion-title>Edit Bank</ion-title>
+    <ion-buttons fill="outline" slot="end">
+			<ion-button color="dark" (click)="dismiss()">
+				Close
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="bankForm">
+   <ion-list lines="full" class="ion-no-margin ion-no-padding">
+
+     <ion-item>
+       <ion-label>Bank Name <ion-text color="danger">*</ion-text></ion-label>
+       <ion-input formControlName="bankName" required type="text" ></ion-input>
+     </ion-item>
+
+     <ion-item>
+      <ion-label>Routing number<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  (keypress)="onKeyPressRoutingNumber($event)"  formControlName="bankRoutingNumber" required type="tel" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Bank Fractional Number</ion-label>
+      <ion-input formControlName="bankIdentity"   type="text" ></ion-input>
+    </ion-item>
+
+     <ion-item>
+       <ion-label>City </ion-label>
+       <ion-input formControlName="bankCity" placeholder="City"></ion-input>
+       <ion-label>State </ion-label>
+       <ion-input formControlName="bankState" placeholder="State"></ion-input>
+       <ion-label>Zip </ion-label>
+       <ion-input formControlName="bankZip"  placeholder="Zip"></ion-input>
+     </ion-item>
+   </ion-list>
+   
+   <div class="modal_form_btn">
+     <ion-button  (click)="updateBank()" [disabled]="bankForm.invalid"  expand="full" type="submit" color="danger" class="ion-no-margin"  >Update</ion-button>
+   </div>
+ </form>
+</ion-content>

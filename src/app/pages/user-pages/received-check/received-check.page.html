@@ -1,0 +1,64 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+<div class="sub-head">
+  <p>Received Checks</p>
+</div>
+
+<ion-toolbar>
+  <ion-searchbar (ionChange)="searchChecks($event)"   debounce="300" [(ngModel)]="searchQuery"  animated></ion-searchbar>
+</ion-toolbar>
+
+<ion-content>
+  <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content ></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngIf="receivedChecks.length==0&&!showLoadingSpinner" >
+      <ion-label style="text-align: center;">No items.</ion-label>
+   </ion-item>
+    <!-- Sliding item with text options on both sides -->
+    <ion-item-sliding *ngFor="let check of receivedChecks">
+      <ion-item >
+        <ion-checkbox color="primary"></ion-checkbox>
+        <ion-label>
+          <div class="sub_details">
+            <p class="check_amt">{{check?.amount | currency}}</p>
+            <p style="display: block;" class="check_dat">{{check?.senderEmail}}</p>
+          </div>
+          <!-- <div class="sub_details">
+            <p class="check_paye">Payee Name</p>
+            <p class="check_accnt">Account Name</p>
+          </div> -->
+        </ion-label>
+          <!-- <ion-label>Primary Note</ion-label> -->
+          <ion-buttons slot="end">
+            <ion-button (click)=presentPopover($event,check);>
+              <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option [disabled]="check.checkStatus==22||check.checkStatus==14||disablePrintAfterPrinted[check.id]" color="tertiary" (click)="printCheck(check.id)"  expandable>
+          <ion-icon class="slide-opt" name="print"></ion-icon>
+          Print
+        </ion-item-option>
+        <!-- <ion-item-option color="success" expandable  >
+          <ion-icon class="slide-opt" name="eye"></ion-icon>
+          View
+        </ion-item-option > -->
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more checks..">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+

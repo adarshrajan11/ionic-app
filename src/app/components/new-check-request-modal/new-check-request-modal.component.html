@@ -1,0 +1,63 @@
+<ion-header>
+	<ion-toolbar>
+    <ion-title>Create New Request</ion-title>
+    <ion-buttons fill="outline" slot="end">
+			<ion-button color="dark" (click)="dismiss()">
+				Close
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form >
+  <ion-list>
+    <ion-item *ngIf="requestType==1">
+      <ion-label>Req a Check From<ion-text color="danger">*</ion-text></ion-label>
+      <ionic-selectable [(ngModel)]="newRequestData.payee" name="payeeId" style="font-size: 13px; height:40px;"  item-content [items]="payees"
+           placeholder="--Select Client --"  (onChange)="onChangeClient($event)" itemValueField="id" (onSearch)="searchPayees($event)" itemTextField="name" [canSearch]="true">
+      </ionic-selectable>
+    </ion-item>
+
+    <ion-item *ngIf="requestType==1&&newRequestData.payee">
+      <ion-label>Client Email :<ion-text color="danger"></ion-text></ion-label>
+      <ion-input [(ngModel)]="newRequestData.clientEmail"  name="email"  type="email" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Check Payable to<ion-text color="danger">*</ion-text></ion-label>
+      <ionic-selectable [(ngModel)]="newRequestData.bankAccount" name="bankAccountId" style="font-size: 13px; height:40px;"  item-content [items]="bankAccounts"
+          placeholder="--Select Bank Account--" itemValueField="id" itemTextField="name" [canSearch]="true">
+      </ionic-selectable>
+    </ion-item>
+
+    <ion-item *ngIf="requestType==2" >
+      <ion-label>Payee Phone<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  [(ngModel)]="newRequestData.phone"  name="phone" type="tel" placeholder="Enter Phone Number"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="requestType==3">
+      <ion-label>Payee Email<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input [(ngModel)]="newRequestData.email" name="email"  type="email" placeholder="Enter email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Amount<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  [(ngModel)]="newRequestData.amount"  type="tel" placeholder="Amount" name="amount" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Memo</ion-label>
+      <ion-input type="text"  [(ngModel)]="newRequestData.memo" name="memo"  placeholder="Memo"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="requestType==1">
+      <ion-checkbox  [(ngModel)]="newRequestData.isEditable" name="isEditable"></ion-checkbox>
+      <ion-label>Editable</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button *ngIf="requestType==1" class="sub_btn_regst_check" expand="full" (click)="submitNewRequest()" >Submit</ion-button>
+  <ion-button *ngIf="requestType==2||requestType==3" class="sub_btn_regst_check" expand="full" (click)="submitNewRequestByLink(requestType)" >Submit</ion-button>
+  </form>
+</ion-content>

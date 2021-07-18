@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div class="logo_img" text-center >
+      <img src="../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+    <ion-buttons slot="end">
+      <!-- <ion-icon routerLink='/add-payee' class="notif" name="add"></ion-icon> -->
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <div class="sub-head-user-verfy">
+    <p class="psubtit">Welcome {{ _authService.userName }}</p>
+    <p class="psubcont">Phone Verification</p>
+  </div>
+
+<ion-content>
+ 
+    <div class="email_cls" text-center>
+      <img src="../../../../assets/media/bg/mob.png"/>
+    </div>
+
+    <div text-center class="user_verify" *ngIf="showPhoneInput">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-input [(ngModel)]="phone" type="tel" placeholder="Enter Your Phone number"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="sendPhoneVerificationCode()">NEXT</ion-button>
+  </div>
+    <!-- <ion-list>
+      <ion-item lines="none">
+        <ion-input type="email" placeholder="Enter Your Email"></ion-input>
+      </ion-item>
+    </ion-list> -->
+  <div text-center class="user_verify" *ngIf="showOtpInput">
+    <ion-row text-center class="otp_inputs">
+      <ion-col>
+        <ion-input #otp1 required maxLength="1" [(ngModel)]="otp.first" (keyup)="otpController($event,otp2,'')">
+        </ion-input>
+        <ion-input #otp2 required maxLength="1" [(ngModel)]="otp.second" (keyup)="otpController($event,otp3,otp1)">
+        </ion-input>
+        <ion-input #otp3 required maxLength="1"  [(ngModel)]="otp.third" (keyup)="otpController($event,otp4,otp2)">
+        </ion-input>
+        <ion-input #otp4 required maxLength="1" [(ngModel)]="otp.forth" (keyup)="otpController($event,otp5,otp3)">
+       </ion-input>
+        <ion-input #otp5  required maxLength="1" [(ngModel)]="otp.fifth" (keyup.enter)="confirmPhoneVerification()" (keyup)="otpController($event,'',otp4)">
+       </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row text-center>
+      <div class="resend_otp" text-center>
+    Not received your code?<a (click)="resendCode()">
+      Resend Code</a>
+      </div>
+    </ion-row>
+    <ion-button (click)="confirmPhoneVerification()">NEXT</ion-button>
+
+
+  </div>
+
+</ion-content>

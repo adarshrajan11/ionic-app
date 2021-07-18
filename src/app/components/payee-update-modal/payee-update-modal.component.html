@@ -1,0 +1,71 @@
+<ion-header>
+	<ion-toolbar>
+    <ion-title>Edit Payee</ion-title>
+    <ion-buttons fill="outline" slot="end">
+			<ion-button color="dark" (click)="dismiss()">
+				Close
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="payeeForm">
+    <ion-list>
+      <ion-item>
+        <ion-label>Payee Name<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="payee name" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nick Name</ion-label>
+        <ion-input type="text" placeholder="nick name" formControlName="nick_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Comapny Name</ion-label>
+        <ion-input type="text" placeholder="company name" formControlName="company_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Phone Number</ion-label>
+        <ion-input type="tel" placeholder="phone number" formControlName="phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input type="email" placeholder="email" formControlName="email"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Address 1</ion-label>
+          <ion-input type="text" placeholder="address1" formControlName="address1"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Address 2</ion-label>
+          <ion-input type="text" placeholder="address2" formControlName="address2"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>City</ion-label>
+          <ion-input type="text" placeholder="city" formControlName="city" ></ion-input>
+        <ion-label>State</ion-label>
+          <ion-input type="text" placeholder="state"  formControlName="state"></ion-input>
+        <ion-label>Zip</ion-label>
+          <ion-input type="text" placeholder="zip" formControlName="zip"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Country</ion-label>
+        <ion-select placeholder="Select Country" formControlName="country">
+          <ion-select-option value="">USA</ion-select-option>
+          <ion-select-option value="">Canada</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+    <ion-button expand="full" type="submit" color="primary" class="ion-no-margin" (click)="onUpdate()" >Update</ion-button>
+
+  </form>
+</ion-content>

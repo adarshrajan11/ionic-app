@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center   >
+      <img src="../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+    <ion-buttons slot="end">
+      <!-- <ion-icon routerLink='/add-payee' class="notif" name="add"></ion-icon> -->
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <div class="sub-head">
+    <p>Company Switching</p>
+  </div>
+
+  <ion-content>
+    <ion-toolbar>
+      <ion-segment  [(ngModel)]="segment">
+        <ion-segment-button value="owncmp">
+          <ion-label>Own company</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="invcomp">
+          <ion-label>Invited Company</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+    
+    <div [ngSwitch]="segment">
+
+      <ion-list *ngSwitchCase="'owncmp'">
+        <ion-radio-group value="owncmp">
+          <ion-item *ngFor="let ownCompany of allCompanies?.ownCompanies">
+            <ion-label><p>{{ownCompany?.companyName}}</p></ion-label>
+            <ion-radio [checked]="ownCompany.companyId==companyManagementService.getActiveCompanyId()" value="{{ownCompany.companyId}}"   (click)="onChangeCompany($event,ownCompany.companyName,'owncmp')"  slot="start" color="success" ></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'invcomp'">
+        <ion-radio-group value="invcomp">
+          <ion-item  *ngFor="let invitedCompany of allCompanies?.invitedCompanies">
+            <ion-label><p>{{ invitedCompany?.companyName }}</p></ion-label>
+            <ion-radio [disabled]="invitedCompany.status!=1" [checked]="invitedCompany.companyId==companyManagementService.getActiveCompanyId()"  value="{{invitedCompany.companyId}}" (click)="onChangeCompany($event,invitedCompany.companyName,'invcomp')"  slot="start" color="success" ></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+  </ion-content>

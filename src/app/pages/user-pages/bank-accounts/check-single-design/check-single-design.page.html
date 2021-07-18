@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center>
+      <img src="../../../../../assets/media/bg/logo_ocw.png" />
+    </div>
+    <ion-buttons slot="end">
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div class="sub-head">
+  <p>Design Your Check</p>
+</div>
+
+<ion-content>
+  <ion-list class="check_img">
+    <ion-item lines="none">
+      <div class="single_check_design">
+        <img class="single_check_img" src="../../../../../assets/media/bg/check_plus_blue.jpg">
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <form id="checkdesignform" [formGroup]="bankAccountForm">
+
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label class="head_name" lines="none">Profile</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nick Name<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="nick name" formControlName="nickName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Company/Your Name<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="company name/your name" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Phone Number<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="phone number" formControlName="phone"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Address<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="text" placeholder="address" formControlName="address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>City<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="city"  formControlName="city"></ion-input>
+        <ion-label>State<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="state" formControlName="state"></ion-input>
+        <ion-label>Zip<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="zip" formControlName="zip"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Extra Line</ion-label>
+        <ion-input type="text" placeholder="write here" formControlName="extraLine"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label class="head_name">Bank Details</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Routing Number<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input  (keypress)="onKeyPressRoutingNumber($event)"  (ionChange)="getBankNameFromRoutingNumber()" type="tel" placeholder="routing number" formControlName="routingNumber"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bank Name<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="bank name" formControlName="bankName"></ion-input>
+      </ion-item>
+      <ion-progress-bar *ngIf="routingNumberLoading"  type="indeterminate"></ion-progress-bar>
+      <ion-item>
+        <ion-label>Street Address</ion-label>
+        <ion-input type="text" placeholder="street address" formControlName="bankStreetAddress"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>City</ion-label>
+        <ion-input type="text" placeholder="city" formControlName="bankCity"></ion-input>
+        <ion-label>State</ion-label>
+        <ion-input type="text" placeholder="state" formControlName="bankState"></ion-input>
+        <ion-label>Zip</ion-label>
+        <ion-input type="text" placeholder="zip" formControlName="bankZip"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Fractional Number<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="fractional #" formControlName="fractionalNumber"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label class="head_name">Check Details</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Check Number<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="check #" formControlName="checkNumber"></ion-input>
+      </ion-item>
+      
+     
+
+      <ion-item>
+        <ion-label>Account Number<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input placeholder="account number" formControlName="accountNumber"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Add Signature</ion-label>
+        <ion-input type="file" placeholder="Signature" (change)="onSignatureChange($event)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Add Logo</ion-label>
+        <ion-input type="file" placeholder="Logo" (change)="onLogoChange($event)"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="full" type="submit" color="primary" class="ion-no-margin" (click)="save()" [disabled]="loading">{{ loading ? "Saving..." : "Save" }}</ion-button>
+
+  </form>
+</ion-content>

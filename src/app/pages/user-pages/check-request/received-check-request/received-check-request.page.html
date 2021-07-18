@@ -1,0 +1,81 @@
+<ion-header>
+  <!-- <app-header></app-header> -->
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center>
+      <img src="../../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+    <ion-buttons slot="end">
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div class="sub-head">
+  <p>Received Check Requests</p>
+</div>
+
+
+<ion-toolbar>
+  <div class="search_filter_group">
+    <ion-searchbar (ionChange)="searchRequest($event)"  debounce="300" [(ngModel)]="searchQuery" animated></ion-searchbar>
+    <div class="filter_selct_cls">
+      <ion-select [(ngModel)]="filterStatus" (ionChange)="loadAllRequests()" class="" interface="popover" placeholder="Filter">
+        <ion-select-option value="">All</ion-select-option>
+        <ion-select-option value="new">New</ion-select-option>
+        <ion-select-option value="approved">Approved</ion-select-option>
+        <ion-select-option value="rejected">Rejected</ion-select-option>
+      </ion-select>
+    </div>  
+  </div>
+</ion-toolbar>
+
+<ion-content>
+  <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+  <ion-refresher slot="fixed"(ionRefresh)="doRefresh($event)">
+    <ion-refresher-content ></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngIf="checkRequests.length==0&&!showLoadingSpinner" >
+      <ion-label style="text-align: center;">No items.</ion-label>
+   </ion-item>
+
+    <ion-item *ngFor="let checkRequest of checkRequests">
+      <!-- <ion-checkbox></ion-checkbox> -->
+      <ion-label>
+        <div class="rqst_apprv_whole_contant">
+          <p class="rqst_apprv_sing_line1">{{ checkRequest?.amount | currency }} | <span>Req From: </span> {{ checkRequest?.requestedFrom }}</p>
+          <p class="rqst_apprv_sing_line2">Payable To: {{ checkRequest?.payToName }}
+            <span class="req_sts" *ngIf="checkRequest.status!=2">
+              (
+              <b>
+                <span *ngIf="checkRequest.status==1" style="color:blue">New</span>
+                <span *ngIf="checkRequest.status==3" style="color:green">Approved</span>
+                <span *ngIf="checkRequest.status==4" style="color:red">Rejected</span>
+             </b>
+             )
+           </span>
+         </p>
+          <p class="rqst_apprv_sing_line2">Memo :{{ checkRequest?.memo }}</p>
+          <p class="rqst_apprv_sing_line2">Date : {{ checkRequest?.date }}
+        </div>
+      </ion-label>
+      <ion-buttons>
+        <ion-button (click)=openReceivedCheckRequestPopover($event,checkRequest);>
+          <ion-icon slot="icon-only" name="more"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event)"  *ngIf="checkRequests.length>0">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more requests..">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

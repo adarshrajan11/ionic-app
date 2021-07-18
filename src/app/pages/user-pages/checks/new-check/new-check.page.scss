@@ -1,0 +1,44 @@
+
+  ion-back-button{
+      --color: #fff;
+  }
+  p{
+      font-family: 'productsansmedium';
+      letter-spacing: 1px;
+      color: #3d905b;
+  }
+  img{
+    width: 93px;
+    display: inline-block;
+    margin-left: 35px;
+  }
+  .sub-head{
+    background: url(../../../../../assets/media/bg/15.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+ion-list{
+    padding-top: 15px;
+}
+ion-item{
+    font-size: 14px;
+    font-family: 'productsansregular';
+}
+ion-buttons{
+    justify-content: space-between;
+    text-transform: uppercase;
+}
+ion-button{
+    font-family: 'productsansmedium';
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+.extr_mar{
+    margin-top: 10px;
+}
+ion-checkbox{
+    margin-right: 3px;
+}

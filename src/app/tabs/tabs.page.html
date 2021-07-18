@@ -1,0 +1,35 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="list">
+      <ion-icon name="list"></ion-icon>
+      <ion-label>Check List</ion-label>
+      <!-- <ion-badge>6</ion-badge> -->
+    </ion-tab-button>
+
+    <ion-tab-button tab="received-check">
+      <ion-icon name="return-left"></ion-icon>
+      <ion-label>Received Check</ion-label>
+      <!-- <ion-badge>3</ion-badge> -->
+    </ion-tab-button>
+
+    <ion-tab-button (click)="presentActionSheet()">
+      <ion-icon class="new_icon" name="add-circle"></ion-icon>
+      <ion-label>New</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="payee-list">
+      <ion-icon name="people"></ion-icon>
+      <ion-label>Payee List</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="bank-account">
+      <ion-icon name="folder-open"></ion-icon>
+      <ion-label>Bank Accounts</ion-label>
+    </ion-tab-button>
+
+    
+  </ion-tab-bar>
+
+</ion-tabs>

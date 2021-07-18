@@ -1,0 +1,107 @@
+.head_tool{
+    --background: #4CAF50;
+  }
+  ion-menu-button{
+    --color: #fff;
+  }
+  .notif, .sear{
+    font-size: 30px;
+    margin-right: 5px;
+    color: #fff;
+  }
+  ion-back-button{
+      --color: #fff;
+  }
+  p{
+      font-family: 'productsansmedium';
+      letter-spacing: 1px;
+      color: #3d905b;
+  }
+  .check_dat{
+    font-size: 12px;
+    color: #575757;
+}
+  .check_amt{
+    color: #000;
+  }
+  .sub_details_expand{
+    display: flex;
+    justify-content: space-between;
+  }
+  .lab_name{
+    font-family: 'productsansregular';
+  }
+  img{
+    width: 84px;
+    display: inline-block;
+  }
+  .sub-head p{
+    margin: 10px 0; 
+    font-size: 14px;
+  }
+  .slide-opt{
+      font-size: 24px;
+      padding-right: 5px;
+  }
+  .sub-head{
+      background: url(../../../../../assets/media/bg/15.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      text-align: center;
+      font-size: 16px;
+      text-transform: uppercase;
+  }
+  ion-checkbox{
+    margin-right: 20px;
+    position: relative;
+  }
+  .top_bar_tools{
+    display: flex;
+    justify-content: space-between;
+    background: #f5f5f5;
+  }
+  ion-tab-button{
+    background: #f5f5f5;
+    color: #3d905b;
+  }
+
+  ion-spinner {
+    display: block;
+    margin: auto;
+  }
+  .payee_name{
+    font-size: 12px;
+    font-family: 'productsansregular';
+  }
+  .search_filter_group{
+    display: flex;
+  }
+  .md ion-searchbar{
+    --border-radius: 50px;
+  }
+  ion-select{
+    background: #f5f5f5;
+    font-size: 13px;
+  }
+  .md ion-select{
+    margin-top: 4px;
+    margin-right: 5px;
+  }
+  .filter_selct_cls{
+    width: 180px;
+  }
+  .ios .toolbar-container{
+    --padding: 0;
+  }
+  .ios ion-searchbar{
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 3px;
+  }
+  .ios ion-select{
+    border-radius: 5px;
+    height: 36px;
+  }
+  .list-ios{
+    margin-bottom: 0;
+  }

@@ -1,0 +1,137 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+@font-face {
+    font-family: 'webfontregular';
+    src: url('assets/fonts/productsans-black-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'webfontregular';
+    src: url('assets/fonts/productsans-blackitalic-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-blackitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'productsansbold';
+    src: url('assets/fonts/productsans-bold-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'webfontregular';
+    src: url('assets/fonts/productsans-bolditalic-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'webfontregular';
+    src: url('assets/fonts/productsans-italic-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'productsanslight';
+    src: url('assets/fonts/productsans-light-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'webfontregular';
+    src: url('assets/fonts/productsans-lightitalic-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'productsansmedium';
+    src: url('assets/fonts/productsans-medium-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'webfontregular';
+    src: url('assets/fonts/productsans-mediumitalic-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-mediumitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'productsansregular';
+    src: url('assets/fonts/productsans-regular-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'productsansthin';
+    src: url('assets/fonts/productsans-thin-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-thin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'webfontregular';
+    src: url('assets/fonts/productsans-thinitalic-webfont.woff2') format('woff2'),
+         url('assets/fonts/productsans-thinitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.searchbar-input {
+    box-shadow: none !important;
+  }
+  .md ion-searchbar{
+    --background: #f5f5f5;
+    --border-radius: 10px;
+  }
+  .searchbar-input.sc-ion-searchbar-ios{
+    border-radius: 5px !important;
+  }
+  .list-ios{
+      margin-bottom: 0;
+  }

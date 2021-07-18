@@ -1,0 +1,51 @@
+ion-item{
+    font-size: 14px;
+    font-family: 'productsansregular';
+}
+ion-title{
+    font-size: 14px;
+    font-family: "productsansmedium";
+    text-transform: uppercase;
+    color: #fff;
+}
+ion-toolbar{
+    --background: #4CAF50;
+    letter-spacing: 1px;
+}
+.modal_form_btn{
+    padding-top: 30px;
+}
+.modal_form_btn ion-button{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'productsansmedium';
+}
+ion-button{
+    font-family: 'productsansmedium';
+}
+
+ion-content{
+    --padding-top: 20px;
+}
+.comment_sub{
+    text-align: right;
+    font-style: italic;
+    font-variant: all-petite-caps;
+}
+.comment_label{
+    white-space: normal;
+    font-family: 'productsansregular';
+}
+.comment_title{
+    margin-left: 15px;
+}
+.comment_whole_title{
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: "productsansmedium";
+}
+
+ion-spinner {
+    display: block;
+    margin: auto;
+  }

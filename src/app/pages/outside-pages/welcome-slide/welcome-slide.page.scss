@@ -1,0 +1,33 @@
+ion-slides {
+    height: 100%;
+  }
+ion-button{
+    width: 100%;
+    --border-radius:50px;
+    font-family: 'productsansmedium';
+    font-size: 14px;
+}
+.out_btn{
+    // border: 2px solid #3880ff;
+    --background: none;
+    color: #3880ff;
+}
+.parent{
+    height: 80%;
+}
+ion-slide{
+    padding: 20px;
+}
+.slide1 img{
+    padding: 30px;
+}
+.slide4 img{
+    width: 78%;
+    margin-right: 30px;
+}
+.slide h3{
+    display: block;
+    font-family: 'productsansmedium';
+    font-size: 20px !important;
+    color: rgb(49, 49, 49);
+}

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center   >
+      <img src="../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+    <ion-buttons slot="end">
+      <!-- <ion-icon routerLink='/add-payee' class="notif" name="add"></ion-icon> -->
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <div class="sub-head" *ngIf="verifyBankAccountUrl">
+    <p>Verify Bank Account</p>
+  </div>
+
+<ion-content *ngIf="verifyBankAccountUrl">
+  <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+  <div class="iframe_content">
+    <iframe width="100%" allowfullscreen frameborder="0"  scrolling="auto" [height]="deviceHeight" (load)="onLoadIframe()"
+     [src]="verifyBankAccountUrl"
+      style="background-color:#fff;">
+    </iframe>
+  </div>
+</ion-content>

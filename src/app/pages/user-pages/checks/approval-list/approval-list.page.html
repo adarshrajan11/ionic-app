@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center>
+      <img src="../../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+
+    <ion-buttons slot="end">
+      <ion-icon routerLink='/tabs/check-model' class="notif" name="add"></ion-icon>
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div class="sub-head">
+  <p>Check Approval</p>
+</div>
+<ion-toolbar>
+  <div class="top_bar_tools">
+     <ion-tab-button  (click)="approve()" >
+      <ion-icon name="checkmark"></ion-icon>
+      <ion-label>Approve</ion-label>
+    </ion-tab-button> 
+
+    <ion-tab-button (click)="reject()">
+      <ion-icon name="close" color="danger"></ion-icon>
+      <ion-label style="color:red">Reject</ion-label>
+    </ion-tab-button>
+
+  
+  </div>
+</ion-toolbar>
+
+
+<ion-content>
+  <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+  <ion-list>
+    <ion-item *ngIf="checks.length==0&&!showLoadingSpinner" >
+      <ion-label style="text-align: center;">No items.</ion-label>
+   </ion-item>
+
+     <ion-item-sliding *ngFor="let check of checks;let i =index">
+      <ion-item [attr.lines]="expandItemControls[i] ? 'none' :''">
+        <ion-checkbox (ionChange)="multiSelectHandler(check.id, $event,check)"  color="primary"></ion-checkbox>
+        <ion-label (click)="expandItem(i)">
+          <div class="sub_details">
+            <p class="check_amt">{{ check?.amount | currency  }} 
+              <span>|</span><span class="payee_name"> {{ check.payeeName }}</span>
+             </p>
+            <p style="display: block;" class="check_dat">
+               {{ check?.bankAccountNickName!='' ? check?.bankAccountNickName : check?.bankAccountName }}
+                <span>|</span> {{ check.checkSerialNo }}
+            </p>
+           
+          </div>
+        </ion-label>
+      
+        
+      </ion-item>
+
+      <ion-item *ngIf="expandItemControls[i]">
+        <ion-label>
+          <div class="sub_details_expand">
+            <p class="check_dat">Created By : <span class="lab_name">{{ check.checkCreatedByName}}</span></p>
+            <p class="check_dat">Date : <span class="lab_name">{{ check.date}}</span></p>
+          </div>
+          <div class="sub_details_expand">
+            <p class="check_dat">Payee : <span class="lab_name">{{ check.payeeName}}</span></p>
+            <p class="check_dat">Account : <span class="lab_name">{{ check.bankAccountName}}</span></p>
+          </div>
+          <div class="sub_details_expand">
+            <p class="check_dat">Memo : <span class="lab_name">{{ check.memo}}</span></p>
+          </div>
+        </ion-label> 
+       </ion-item>  
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+

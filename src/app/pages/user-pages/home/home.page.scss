@@ -1,0 +1,117 @@
+.head_tool{
+  --background: #4CAF50;
+}
+img{
+  width: 93px;
+  display: inline-block;
+}
+ion-menu-button{
+  --color: #fff;
+}
+ion-content{
+  --background: url(../../../../assets/media/bg/geo.png);
+}
+.welcome-card{
+  --background: url(../../../../assets/media/bg/4.png);
+  width: 100%;
+}
+.welcome-card2{
+  --background: url(../../../../assets/media/bg/1.png);
+  width: 100%;
+}
+.welcome-card3{
+  --background: url(../../../../assets/media/bg/3.png);
+  width: 100%;
+}
+.welcome-card4{
+  --background: url(../../../../assets/media/bg/5.png);
+  width: 100%;
+}
+.welcome-card5{
+  --background: url(../../../../assets/media/bg/6.png);
+  width: 100%;
+}
+.welcome-card6{
+  --background: url(../../../../assets/media/bg/2.png);
+  width: 100%;
+}
+.welcome-card7{
+  --background: url(../../../../assets/media/bg/4.png);
+  width: 100%;
+}
+.welcome-card8{
+  --background: url(../../../../assets/media/bg/1.png);
+  width: 100%;
+}
+
+ion-icon{
+  font-size: 45px;
+  color: #fff;
+}
+.notif, .sear{
+  font-size: 30px;
+  margin-right: 5px;
+}
+.sear{
+  margin-right: 10px;
+}
+ion-card-subtitle{
+  color: #fff;
+  font-family: 'productsansregular';
+}
+.feature{
+  font-family: 'productsansregular';
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.offer{
+  font-family: 'productsansregular';
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.ad-card{
+  width: 100%;
+  border-radius: 0;
+  --background: url(../../../../assets/media/bg/off4.png);
+    --background-size: cover;
+    --background-repeat: no-repeat;
+  text-align: left;
+}
+.ad-sub{
+  font-family: 'productsansregular';
+  color: #667EEA;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+.ad-tit{
+  font-family: 'productsansregular';
+  font-size: 18px;
+  color: #434343;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.ad-but{
+  font-family: 'productsanslight';
+  --border-radius: 0;
+  height: 33px;
+  letter-spacing: 1px;
+
+}
+ion-title{
+  --background: #000;
+}
+table {
+  width: 100%;
+}
+.tabl{
+  font-family: 'productsansregular';
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.chart-card{
+  margin: 0;
+}

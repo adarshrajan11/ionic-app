@@ -1,0 +1,27 @@
+<ion-header>
+	<ion-toolbar>
+    <ion-title>Activity Log</ion-title>
+    <ion-buttons fill="outline" slot="end">
+			<ion-button color="dark" (click)="dismiss()">
+				Close
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+    <ion-item *ngFor="let checkActivity of checkActivities">
+      <ion-label>
+        <div>
+          <p class="activity_by_sts"><span class="activity_whole"><span class="activity_label">By: </span>{{ checkActivity.activityBy }}</span><span class="activity_whole"><span class="activity_label">Status: </span>{{checkActivity.status}}</span></p>
+          <p *ngIf="checkActivity?.location" class="activity_date_loc"><span class="activity_whole"><span class="activity_label">Date: </span>{{ checkActivity.date }} </span><span class="activity_whole"><span class="activity_label">Location: </span>{{checkActivity.location}}
+            <!-- <ion-icon (click)="openUpdateDeviceNameAlert(checkActivity.ipAddress)"  name="create"></ion-icon> -->
+          </span></p>
+          <p class="activity_note"><span class="activity_label">Note: </span>{{ checkActivity.notes }}</p>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,60 @@
+.head_tool{
+    --background: #4CAF50;
+  }
+  ion-menu-button{
+    --color: #fff;
+  }
+  .notif, .sear{
+    font-size: 30px;
+    margin-right: 5px;
+    color: #fff;
+  }
+  .sear{
+      margin-right: 10px;
+  }
+  ion-back-button{
+      --color: #fff;
+  }
+  img{
+    width: 84px;
+    display: inline-block;
+  }
+  .sub-head p{
+    margin: 10px 0; 
+    font-size: 14px;
+  }
+  .sub-head{
+    background: url(../../../../../assets/media/bg/15.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: 'productsansmedium';
+    color: #3d905b;
+    letter-spacing: 1px;
+
+}
+.single_check_img{
+    width: 100%;
+    display: block;
+}
+
+.check_img{
+    margin-top: 5px;
+}
+
+ion-item{
+    font-size: 14px;
+    font-family: 'productsansregular';
+}
+ion-button{
+    font-family: 'productsansmedium';
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.head_name{
+    font-family: 'productsansmedium';
+    text-transform: uppercase;
+}

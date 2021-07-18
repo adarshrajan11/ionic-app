@@ -1,0 +1,32 @@
+<ion-header>
+	<ion-toolbar>
+    <ion-title>Existing Attachment</ion-title>
+    <ion-buttons fill="outline" slot="end">
+			<ion-button color="dark" (click)="dismiss()">
+				Close
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="none" class="attach_head">
+      <ion-checkbox color="primary"></ion-checkbox>
+      <ion-label>Date</ion-label>
+      <ion-label>File Name</ion-label>
+      <!-- <ion-label slot="end">Remove</ion-label> -->
+    </ion-item>
+
+    <ion-item class="attach_list" *ngFor="let attachment of existingAttachments">
+      <ion-checkbox (ionChange)="selectHandler(attachment.id, $event)" [checked]="attachment.isMailDocument==1" color="primary"></ion-checkbox>
+      <ion-label>{{ attachment.date}}</ion-label>
+      <ion-label ><a (click)="openAttachment(attachment.id)">{{ attachment.fileName }}</a></ion-label>
+      <!-- <ion-icon name="trash" slot="end"></ion-icon> -->
+    </ion-item>
+
+  </ion-list>
+  <!-- <div class="modal_form_btn">
+    <ion-button (click)="updateMailDocumentsFromExistingAttachments()" expand="full" type="submit" color="danger" class="ion-no-margin" >Update</ion-button>
+  </div> -->
+</ion-content>

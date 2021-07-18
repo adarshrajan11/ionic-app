@@ -1,0 +1,13 @@
+<ion-list>
+  <!-- <ion-list-header>MORE...</ion-list-header> -->
+  <!-- <ion-item button routerDirection="forward"  (click)="ref.openPayeeUpdateModal(payee?.id);ref.popoverController.dismiss()"   >
+    <ion-icon name="create"></ion-icon>Open Edit modal test
+  </ion-item> -->
+  <ion-item button [routerLink]="['/tabs/add-payee',payee]" routerDirection="forward" (click)="ref.popoverController.dismiss()">
+    <ion-icon name="create"></ion-icon>Edit
+  </ion-item>
+  <ion-item lines="none" button [disabled]="ref.deleting" (click)="ref.presentDeleteConfirm(payee)">
+    <ion-icon name="trash"></ion-icon> <ion-label>{{ ref.deleting ? "Deleting..." : "Delete" }} </ion-label>
+    <ion-spinner *ngIf="ref.deleting"></ion-spinner>
+  </ion-item>
+</ion-list>

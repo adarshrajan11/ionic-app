@@ -1,0 +1,79 @@
+<ion-header>
+	<ion-toolbar>
+    <ion-title>Edit Bank Account</ion-title>
+    <ion-buttons fill="outline" slot="end">
+			<ion-button color="dark" (click)="dismiss()">
+				Close
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="bankAccountForm">
+   <ion-list lines="full" class="ion-no-margin ion-no-padding">
+     <ion-item>
+       <ion-label>Select Bank  <ion-text color="danger">*</ion-text></ion-label>
+       <ion-select  formControlName="bankId" [disabled]="bankAccountDetails?.bankAccountVerified==1">
+        <ion-select-option *ngFor="let bank of banks" value="{{bank.id}}" >{{ bank.name }}</ion-select-option>
+      </ion-select>
+      <ion-icon  style="z-index: 10;" *ngIf="bankAccountForm?.value?.bankId" (click)="openBankUpdateModal(bankAccountForm?.value?.bankId)"  name="create"></ion-icon>
+     </ion-item> 
+    
+     <ion-item>
+       <ion-label>Account Name <ion-text color="danger">*</ion-text></ion-label>
+       <ion-input formControlName="bankAccountName" required type="text" placeholder="Enter company name"></ion-input>
+     </ion-item>
+
+     <ion-item>
+      <ion-label>Account Nick Name<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input formControlName="bankAccountNickName" required type="text" placeholder="Enter Nick name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Account Number<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input formControlName="bankAccountNumber" [readonly]="bankAccountDetails?.bankAccountVerified==1" required type="text" placeholder="Enter account number"></ion-input>
+      <ion-icon *ngIf="bankAccountDetails?.bankAccountVerified==1" name="checkmark-circle" style="color:green"></ion-icon>
+    </ion-item>
+
+     <ion-item>
+       <ion-label>Address Line 1 <ion-text color="danger">*</ion-text></ion-label>
+       <ion-input formControlName="bankAccountAddressLine1" required type="text" placeholder="Enter address 1"></ion-input>
+     </ion-item>
+
+     <ion-item>
+       <ion-label>Address Line 2</ion-label>
+       <ion-input  formControlName="bankAccountAddressLine2"  type="text" placeholder="Enter address 2"></ion-input>
+     </ion-item>
+
+     <ion-item>
+       <ion-label>City <ion-text color="danger">*</ion-text></ion-label>
+       <ion-input formControlName="bankAccountCity" placeholder="City"></ion-input>
+       <ion-label>State <ion-text color="danger">*</ion-text></ion-label>
+       <ion-input formControlName="bankAccountState" placeholder="State"></ion-input>
+       <ion-label>Zip <ion-text color="danger">*</ion-text></ion-label>
+       <ion-input formControlName="bankAccountZip"  placeholder="Zip"></ion-input>
+     </ion-item>
+
+     <ion-item>
+       <ion-label>Phone</ion-label>
+       <ion-input formControlName="bankAccountPhone"   type="tel" placeholder="Enter phone number"></ion-input>
+     </ion-item>
+
+     <ion-item *ngIf="!bankAccountDetails?.hasTemplate">
+      <ion-label>Update Signature</ion-label>
+      <ion-input type="file" placeholder="Signature" (change)="onSignatureChange($event)"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="!bankAccountDetails?.hasTemplate">
+      <ion-label>Update Logo</ion-label>
+      <ion-input type="file" placeholder="Logo" (change)="onLogoChange($event)"></ion-input>
+    </ion-item>
+
+   </ion-list>
+   
+   <div class="modal_form_btn">
+     <ion-button (click)="updateBankAccount()" [disabled]="bankAccountForm.invalid"  expand="full" type="submit" color="danger" class="ion-no-margin"  >Update</ion-button>
+   </div>
+ </form>
+</ion-content>

@@ -1,0 +1,65 @@
+
+.pro-pic{
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+  }
+.user-area{
+    text-align: center;
+    padding: 20px;
+    background: url(../assets/media/bg/13.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+ion-label{
+    font-family: 'productsansmedium';
+    color: #fff;
+    letter-spacing: 1px;
+}  
+img{
+    border: 3px solid #fff;
+}
+.sub_men{
+    font-family: 'productsansregular';
+    letter-spacing: 1px;
+    font-size: 14px; 
+}
+@media(min-width:991px){
+    ion-menu{
+        display: none !important;
+    }
+}
+.compny-name{
+    text-transform: lowercase;
+    display: flex;
+    justify-content: center;
+}
+.name_area{
+    color: #fff;
+    font-family: 'productsansregular';
+}
+.name_area::first-letter{
+    text-transform: capitalize;
+    color: #fff;
+}
+.hideMenu{
+    display:none;
+}
+.company_sync{
+    font-size: 20px;
+}
+ion-list{
+    padding: 0;
+}
+.verify_menu{
+    --background: rgb(255, 243, 102);
+    --color:rgb(255, 93, 93);
+}
+.ios ion-toolbar{
+    --padding-top: 0px !important;
+    --padding-start: 0px !important;
+    --padding-end: 0px !important;
+    --padding-bottom: 0px !important;
+}

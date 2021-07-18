@@ -1,0 +1,28 @@
+ion-item{
+    font-size: 14px;
+    font-family: 'productsansregular';
+}
+ion-title{
+    font-size: 14px;
+    font-family: "productsansmedium";
+    text-transform: uppercase;
+    color: #fff;
+}
+ion-toolbar{
+    --background: #4CAF50;
+    letter-spacing: 1px;
+}
+.modal_form_btn{
+    padding-top: 30px;
+}
+.modal_form_btn ion-button{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'productsansmedium';
+}
+ion-button{
+    font-family: 'productsansmedium';
+}
+ion-content{
+    --padding-top: 20px;
+}

@@ -1,0 +1,65 @@
+<ion-app *ngIf="authService.isLoggedIn()">
+  <!-- <ion-split-pane contentId="main-content" [ngClass]="{ 'hideMenu':(router.url=='/login'||router.url=='/register'||router.url=='/forget-password'||router.url=='/submit-otp'||router.url=='/reset-password') }"> -->
+    <ion-split-pane contentId="main-content" >
+    <!-- <ion-menu contentId="main-content" type="overlay" *ngIf="router.url!='/login'&&router.url!='/register'&&router.url!='/forget-password'&&router.url!='/submit-otp'&&router.url!='/reset-password'"> -->
+      <ion-menu contentId="main-content"  type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          
+          <div class="user-area">
+            <!-- <div class="verify">
+              <p>Verify your account</p>
+            </div> -->
+            <ion-avatar class="pro-pic">
+              <img src="../assets/media/users/user.png">
+            </ion-avatar>
+            <ion-label class="pro-name">{{ authService?.userName }}</ion-label>
+            <!-- <ion-label class="compny-name"><p class="name_area">{{ _companyManagementService?.getActiveCompanyName() }}</p><ion-icon *ngIf="_companyManagementService?.getActiveCompanyName()" routerLink="./company-switch" class="company_sync" name="sync"></ion-icon></ion-label> -->
+            <ion-label class="compny-name">
+              <p class="name_area">{{ _companyManagementService?.getActiveCompanyName() }}</p>
+              <!-- <ion-chip>
+                <ion-label color="primary">change</ion-label>
+              </ion-chip> -->
+            </ion-label>
+          </div>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="side_menu">
+        <ion-list>
+
+          <ion-menu-toggle auto-hide="false" *ngIf="!userService.isUserVerified()">
+            <ion-item lines="none" detail="none" class="verify_menu" routerLink="/user-verification-email">
+              <ion-icon slot="start" color="danger" name="warning"></ion-icon>
+              <ion-label class="sub_men">
+                Verify your account 
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item detail="false" [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label class="sub_men">
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        
+          <ion-menu-toggle auto-hide="false" (click)="logout()">
+            <ion-item  lines="none">
+              <ion-icon slot="start" color="danger" name="power" ></ion-icon>
+              <ion-label class="sub_men">
+                Logout 
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
+<ion-router-outlet *ngIf="!authService.isLoggedIn()" id="main-content"></ion-router-outlet>

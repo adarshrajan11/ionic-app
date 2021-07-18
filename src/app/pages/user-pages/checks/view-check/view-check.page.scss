@@ -1,0 +1,80 @@
+
+  p{
+      font-family: 'productsansmedium';
+      letter-spacing: 1px;
+      color: #3d905b;
+  }
+  .sub-head{
+    background: url(../../../../../assets/media/bg/15.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+img{
+    width: 84px;
+    display: inline-block;
+  }
+  .sub-head p{
+    margin: 10px 0; 
+    font-size: 14px;
+  }
+  .sear{
+    margin-right: 10px;
+}
+.view-check-img{
+    width: 100%;
+    display: block;
+}
+.view-check{
+    font-size: 10px;
+    font-family: 'productsansregular';
+    position: relative;
+}
+.pay_to_name{
+    position: absolute;
+    top: 39%;
+    left: 13%;
+}
+.check_date{
+    position: absolute;
+    top: 23%;
+    left: 86%;
+}
+.check_amount{
+    position: absolute;
+    top: 42%;
+    left: 86%;
+}
+.check_bank_name{
+    position: absolute;
+    top: 8%;
+    left: 75%;
+}
+.written_amount{
+    position: absolute;
+    top: 53%;
+    left: 13%;
+}
+.payee_details{
+    position: absolute;
+    top: 68%;
+    left: 13%;
+}
+.check_memo{
+    position: absolute;
+    top: 90%;
+    left: 10%;
+    width:52%;
+}
+.check_ba{
+    position: absolute;
+    top: 8%;
+    left: 13%;
+}
+
+ion-spinner {
+    display: block;
+    margin: auto;
+  }

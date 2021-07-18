@@ -1,0 +1,42 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+  <div class="sub-head" *ngIf="check_view_data" >
+    <p>Check Details</p>
+  </div>
+
+  
+ 
+<ion-content padding >
+  <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+      <div class="view-check" *ngIf="check_view_data" >
+      <img class="view-check-img" src="../../../../../assets/media/bg/single_image.png">
+      <div class="pay_to_name">{{check_view_data.payeeName}}</div>
+      <div class="check_date">{{check_view_data.date | date:'M/d/yyyy'}}</div>
+      <div class="check_amount">{{check_view_data.amount}}</div>
+      <div class="check_bank_name">{{check_view_data.bankName}}</div>
+      <div class="written_amount">{{check_view_data.amountInWord}}</div>
+      <div class="payee_details">{{check_view_data.payeeCompanyName}}<br *ngIf="check_view_data.payeeCompanyName"/>
+                                  {{check_view_data.payeeName}}<br/>
+                                  {{check_view_data.payeeAddress1}}<span *ngIf="check_view_data.payeeAddress2" >, </span>
+                                  {{check_view_data.payeeAddress2}}
+                            
+      </div>
+      <div class="check_memo" >{{check_view_data.memo}}</div>
+      <div class="check_ba">{{check_view_data.bankAccountName}}<br></div>
+    </div>
+</ion-content>
+
+<!-- <ion-content padding >
+  <div class="view-check">
+    <img class="view-check-img" src="../../assets/media/bg/single_image.png">
+    <div class="pay_to_name">Althaf</div>
+    <div class="check_date">12/02/2019</div>
+    <div class="check_amount">600.00</div>
+    <div class="check_bank_name">Austin Bank</div>
+    <div class="written_amount">Six hundread</div>
+    <div class="payee_details">Althaf</div>
+    <div class="check_memo">Electricity</div>
+    <div class="check_ba">813, Cumberland Tyler, TX, 75701 AAAA<br></div>
+  </div>
+</ion-content> -->

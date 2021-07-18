@@ -1,0 +1,42 @@
+<ion-header>
+	<ion-toolbar>
+    <ion-title>Attachments</ion-title>
+    <ion-buttons fill="outline" slot="end">
+			<ion-button color="dark" (click)="dismiss()">
+				Close
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item [attr.lines]="loadAttachmentProgress ? 'none' :''"  >
+      <ion-label>Add Attachment </ion-label>
+      <ion-input type="file"(change)="saveAttachment($event)"  type="file" id="upload" accept="application/pdf" ></ion-input>
+      <!-- <ion-icon slot="end" name="send"></ion-icon> -->
+    </ion-item>
+    <ion-progress-bar *ngIf="loadAttachmentProgress" type="indeterminate"></ion-progress-bar>
+
+    <!-- <ion-item lines="none">
+      <h5 class="attachement_whole_title">Attachments</h5>
+    </ion-item> -->
+    <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+    <ion-item *ngIf="attachments.length==0&&!showLoadingSpinner">
+      <ion-label style="text-align: center;">No Attachments</ion-label>
+   </ion-item>
+
+    <ion-item lines="none" *ngFor="let attachment of attachments">
+      <ion-label class="attachemnet_label">
+        <h5 class="attachemet_title"><a (click)="openAttachment(attachment.id)">{{ attachment.fileName }}</a></h5>
+        <p class="attachemet_sub">
+          <span>{{ attachment.date }}</span>
+          <ion-chip (click)="deleteAttachment(attachment.id)" slot="end" outline color="primary">
+          <ion-icon name="trash"></ion-icon>
+          <ion-label>Delete</ion-label>
+        </ion-chip>
+      </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,63 @@
+.head_tool{
+    --background: #4CAF50;
+  }
+  ion-menu-button{
+    --color: #fff;
+  }
+  .notif, .sear{
+    font-size: 30px;
+    margin-right: 5px;
+    color: #fff;
+  }
+  ion-back-button{
+      --color: #fff;
+  }
+  p{
+      font-family: 'productsansmedium';
+      letter-spacing: 1px;
+      color: #3d905b;
+  }
+  img{
+    width: 84px;
+    display: inline-block;
+  }
+  .sub-head p{
+    margin: 10px 0; 
+    font-size: 14px;
+  }
+  .sub-head{
+    background: url(../../../../../assets/media/bg/15.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.single_lab{
+    padding: 0;
+}
+.lab_head{
+    padding: 0;
+    font-family: 'productsansmedium';
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #909090;
+}
+.email_content{
+    padding: 20px 10px;
+}
+ion-text{
+    font-size: 16px;
+    font-family: 'productsansmedium';
+    letter-spacing: 1px;
+    color: #225fd0;
+}
+.single_data{
+    border-bottom: 2px solid #909090;
+    margin-bottom: 30px;
+}
+.add_button1{
+  --background: linear-gradient(to right, rgb(20, 136, 204), rgb(43, 50, 178));
+  --border-radius: 0;
+}

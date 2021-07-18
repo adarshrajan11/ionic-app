@@ -1,0 +1,27 @@
+ion-item{
+    font-size: 14px;
+    font-family: 'productsansregular';
+}
+ion-title{
+    font-size: 14px;
+    font-family: "productsansmedium";
+    text-transform: uppercase;
+    color: #fff;
+}
+ion-toolbar{
+    --background: #4CAF50;
+    letter-spacing: 1px;
+}
+ion-button{
+    font-family: 'productsansmedium';
+}
+
+ion-content{
+    --padding-top: 20px;
+}
+ion-checkbox{
+    margin-right: 5px;
+}
+.sub_btn_regst_check{
+    margin: 20px 0 0 0;
+}

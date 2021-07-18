@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center   >
+      <img src="../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+    <ion-buttons slot="end">
+      <!-- <ion-icon routerLink='/add-payee' class="notif" name="add"></ion-icon> -->
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <div class="sub-head">
+    <p>Verify Bank</p>
+  </div>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-segment  [(ngModel)]="segment">
+      <ion-segment-button value="verifybank">
+        <ion-label>Verified Bank</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="nonverifybank">
+        <ion-label>Non Verified Bank</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="segment">
+  
+    <ion-list *ngSwitchCase="'verifybank'">
+    
+      <ion-item *ngFor="let bankAccount of verifiedAccounts" >
+        <ion-label>
+          <div class="sub_details">
+            <p class="check_amt">{{ bankAccount.nickName!=''?bankAccount.nickName :bankAccount.name }}</p>
+            <p style="display: block;" class="check_dat">{{ bankAccount.Accountnumber }}</p>
+          </div>
+        </ion-label>
+          <ion-chip color="success">
+            <ion-label color="success">active</ion-label>
+          </ion-chip>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'nonverifybank'">
+      <ion-item *ngFor="let bankAccount of nonVerifiedAccounts">
+        <ion-label>
+          <div class="sub_details">
+            <p class="check_amt">{{ bankAccount.nickName!=''?bankAccount.nickName :bankAccount.name }}</p>
+            <p style="display: block;" class="check_dat">{{ bankAccount.Accountnumber }}</p>
+          </div>
+        </ion-label>
+          <ion-chip color="danger" [routerLink]="['/bank-verification/bank-verification-step2', {bankAccount:bankAccount.id}]">
+            <ion-label color="danger">verify Now</ion-label>
+          </ion-chip>
+      </ion-item>
+    </ion-list>
+
+
+  </div>
+
+</ion-content>

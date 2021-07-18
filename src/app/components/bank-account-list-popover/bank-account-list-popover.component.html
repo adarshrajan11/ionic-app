@@ -1,0 +1,13 @@
+<ion-list (click)="ref.popoverController.dismiss()">
+  <!-- <ion-list-header>MORE...</ion-list-header> -->
+
+  <!-- <ion-item button><ion-icon name="create"></ion-icon>Edit</ion-item>
+  <ion-item button  (click)="ref.delete(payee)"><ion-icon name="trash"></ion-icon>{{ ref.deleting ? "Deleting..." : "Delete" }} <ion-spinner></ion-spinner></ion-item> -->
+
+  <ion-item button (click)="openBankAccountUpdateModal(bankAccountId)">
+    <ion-icon name="create"></ion-icon>Edit
+  </ion-item>
+  <ion-item lines="none" button [disabled]="ref.bankAccountDeleting"  (click)="ref.presentBankAccountDeleteConfirm(bankAccountId);">
+    <ion-icon name="trash"></ion-icon> <ion-label> {{ ref.bankAccountDeleting ? "Deleting..." : "Delete" }}   </ion-label>
+  </ion-item>
+</ion-list>

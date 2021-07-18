@@ -1,0 +1,172 @@
+<!-- <ion-header>
+  <ion-toolbar class="head_tool">
+
+    <div class="head_start"> -->
+      <!-- <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons> -->
+      <!-- <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <div text-center   >
+        <p class="head">Multi Check Mailing Option</p>
+      </div>
+    </div>
+    <div class="filbtns"> -->
+      <!-- <a class="refil">Refill Now</a> -->
+      <!-- <a class="refil_bal">Bal</a> -->
+      <!-- <a class="refil_amt">Bal : {{ currentRefillBalance | currency  }}</a> -->
+    <!-- </div> -->
+
+
+  <!-- </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center>
+      <img src="../../../../../assets/media/bg/logo_ocw.png" />
+    </div>
+    <ion-buttons slot="end">
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div class="sub-head">
+  <p>Multi Mail Check</p>
+</div>
+
+
+<ion-content>
+  <div class="filbtns">
+    <!-- <a class="refil">Refill Now</a> -->
+    <!-- <a class="refil_bal">Bal</a> -->
+    <a class="refil_amt">Bal : {{ currentRefillBalance | currency  }}</a>
+  </div>
+  <ion-slides [options]="slideOpts">
+    <ion-slide  *ngFor="let check of checksData;let i = index">
+      <ion-card class="mail_card">
+        <ion-card-header>
+          <span class="card_no">{{ i+1 }}</span>
+          <ion-list>
+           
+            <ion-item>
+              <ion-label>Payee</ion-label>
+              <ion-input   type="text" readonly value="{{ check.payeeName }}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Shipping Type</ion-label>
+              <ion-select (ionChange)="calculateAmount()"     [(ngModel)]="mailCheckProcessData.mailCheckData[i].shippingType" [disabled]="showCustomAddressMode">
+                <ion-select-option *ngFor="let mailOption of mailOptions.mailTypes" value="{{ mailOption.id }}">{{ mailOption.name }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Check Paper</ion-label>
+              <ion-select (ionChange)="calculateAmount()"  [(ngModel)]="mailCheckProcessData.mailCheckData[i].checkPaper">
+                <ion-select-option  *ngFor="let checkPaper of mailOptions.checkPapers" value="{{ checkPaper.id }}">{{ checkPaper.name }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-checkbox (ionChange)="calculateAmount()"  color="primary" [(ngModel)]="mailCheckProcessData.mailCheckData[i].isSmsEnabled"></ion-checkbox>
+              <ion-label>Sms</ion-label>
+              <ion-input type="tel" placeholder="Phone no" [(ngModel)]="mailCheckProcessData.mailCheckData[i].payeePhone"></ion-input>
+            </ion-item>
+
+            <ion-item class="last_input">
+              <ion-checkbox   color="primary"  [(ngModel)]="mailCheckProcessData.mailCheckData[i].isEmailEnabled"></ion-checkbox>
+              <ion-label>Email</ion-label>
+              <ion-input type="email" placeholder="Email" [(ngModel)]="mailCheckProcessData.mailCheckData[i].payeeEmail"></ion-input>
+            </ion-item>
+          </ion-list>
+          <div class="card_footer">
+            <a class="footer_left">
+              <span>Attach</span>
+              <span class="fileinput">
+                <ion-input (change)="saveAttachment($event,mailCheckProcessData.mailCheckData[i].checkId,i)"  type="file" id="upload" accept="application/pdf" ></ion-input>
+                <ion-icon  name="document"></ion-icon><ion-badge *ngIf="mailCheckProcessData.mailCheckData[i].attachedDocumentsCount>0" class="attach_badge" color="primary">{{ mailCheckProcessData.mailCheckData[i].attachedDocumentsCount }}</ion-badge> 
+              </span>
+              <ion-icon *ngIf="check.totalAttachmentsCount>0" (click)="openExistingAttachmentModal(check.checkId,i)" class="doc_view" name="eye"></ion-icon><ion-badge *ngIf="check.totalAttachmentsCount>0" class="view_badge" color="primary">{{ check.totalAttachmentsCount }}</ion-badge> 
+            </a>
+            <a class="footer_right">
+              <span>Total : <b>{{ mailCheckProcessData.mailCheckData[i].total | currency }}</b></span>
+            </a>
+          </div>
+        </ion-card-header>
+        <ion-progress-bar *ngIf="uploadProgressBar[i]" type="indeterminate"></ion-progress-bar>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-label>Sub Total/Total : $23.00</ion-label>
+    </ion-card-header>
+  </ion-card> -->
+
+  <ion-row>
+    <ion-list class="ship_type">
+      <ion-item lines="none" class="total">
+        <!-- <ion-label>Sub Total/Total : $23.00</ion-label> -->
+        <ion-chip slot="end" color="success">
+          <ion-label color="success">Sub Total/Total : {{ mailCheckProcessData.subTotal | currency }} </ion-label>
+        </ion-chip>
+      </ion-item>
+      <ion-item class="envelop">
+        <ion-label>Envelop From</ion-label>
+        <ion-select [(ngModel)]="mailCheckProcessData.customFromAddress" placeholder="Default">
+          <ion-select-option *ngFor="let address of customFromAddressList"  value="{{ address.id }}" >{{ address.name }}</ion-select-option>
+        </ion-select>
+        <ion-icon class="upper_z" (click)="openEnvelopModal(true,mailCheckProcessData.customFromAddress)" *ngIf="mailCheckProcessData.customFromAddress" name="create"></ion-icon>
+        <ion-icon class="upper_z" (click)="openEnvelopModal()" name="add-circle"></ion-icon>
+      
+      </ion-item>
+
+        <ion-radio-group>
+          <ion-item class="ship_type_item" >
+            <ion-label>Ship All checks to its own payee address.</ion-label>
+            <ion-radio  slot="start" checked  (click)="onClickShipToCustomAddress(0)"></ion-radio>
+          </ion-item>
+      
+          <ion-item class="ship_type_item" >
+            <ion-label>Ship All to this custom address</ion-label>
+            <ion-radio   slot="start"  (click)="onClickShipToCustomAddress(1)"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      
+      <ion-list class="drpdwn_cstm_ship" *ngIf="showCustomAddressMode">
+        <ion-item class="drpdwn_cstm_ship_cotnt">
+          <ion-label>Select Address</ion-label>
+          <ion-select [(ngModel)]="mailCheckProcessData.customToAddress" placeholder="Default">
+            <ion-select-option *ngFor="let address of customToAddressList"  value="{{ address.id }}">{{ address.name }}</ion-select-option>
+          </ion-select>
+          <ion-icon (click)="openShipAddressModal(true,mailCheckProcessData.customToAddress)" class="upper_z" *ngIf="mailCheckProcessData.customToAddress" name="create"></ion-icon>
+          <ion-icon (click)="openShipAddressModal()" class="upper_z" name="add-circle"></ion-icon>
+        </ion-item>
+        <ion-item class="drpdwn_cstm_ship_cotnt">
+          <ion-label>Shipping Type</ion-label>
+          <ion-select (ionChange)="calculateAmount()" [(ngModel)]="mailCheckProcessData.customShippingType">
+            <ion-select-option *ngFor="let mailOption of mailOptions.mailTypes" value="{{ mailOption.id }}">{{ mailOption.name }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none" class="total_ship">
+          <ion-label>Shipping Fee : {{ mailCheckProcessData.customShippingFee | currency }}<br><span>Total : {{ mailCheckProcessData.customTotalAmount | currency }}</span></ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-toolbar color="primary">
+        <ion-title slot="start">Now you can attach pdf document<br>with check . $1.00 per page.</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="onSubmitMailCheck()">
+            Submit
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+  </ion-row>
+</ion-content>

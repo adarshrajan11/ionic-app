@@ -1,0 +1,70 @@
+<ion-content padding>
+  <form [formGroup]="loginForm" autocomplete="off">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <img src="../../assets/media/bg/logo_ocw.png"/>
+          </div>
+          
+          <div padding>
+            <ion-item lines="none">
+              <ion-input formControlName="email" type="email" placeholder="Username"  (keyup.enter)=" password.value ? submit() : password.setFocus()" ></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input formControlName="password" type="password" placeholder="Password" (keyup.enter)="submit()" #password></ion-input>
+            </ion-item>
+            <div class="text-left">
+              <a routerLink='/forget-password'>Forget Password?</a>
+            </div>
+          </div>
+          <div padding>
+            <ion-button (click)="submit()"  [disabled]="loading">Login<ion-spinner class="sm-spinner" *ngIf="loading" ></ion-spinner></ion-button>
+          </div>          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <!-- <form #form="ngForm" (ngSubmit)="login(form)">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <img src="../../assets/media/bg/logo_ocw.png"/>
+          </div>
+          <div padding>
+            <ion-item lines="none">
+              <ion-input name="email" type="email" placeholder="Username"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input name="password" type="password" placeholder="Password"></ion-input>
+            </ion-item>
+            <div class="text-left">
+              <a routerLink='/forget-password'>Forget Password?</a>
+            </div>
+          </div>
+          <div padding>
+            <ion-button type="submit" routerLink='/tabs/company-switch' [disabled]="form.invalid">Login</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form> -->
+  <ion-row text-center>
+    <div class="text-center" text-center>
+      Don't have account?<a routerLink='/register'> Sign up for free</a>
+      <a class="site_link" target="_blank" href="https://onlinecheckwriter.com/">www.onlinecheckwriter.com</a>
+      </div>
+    
+     <!-- <div class="excess text-center" text-center>
+        Login With
+      </div>
+      <div class="social-icons">
+        <ion-icon (click)="facebookLogin()"  name="logo-facebook"></ion-icon>
+        <ion-icon (click)="googleLogin()" name="logo-google"></ion-icon>
+         <ion-icon (click)="linkedInLogin()" name="logo-linkedin"></ion-icon>
+         <ion-icon name="logo-instagram"></ion-icon> 
+      </div>   -->
+  
+  </ion-row>
+</ion-content>

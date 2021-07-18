@@ -1,0 +1,73 @@
+.head_tool{
+    --background: #4CAF50;
+  }
+  ion-menu-button{
+    --color: #fff;
+  }
+  .notif, .sear{
+    font-size: 30px;
+    margin-right: 5px;
+    color: #fff;
+  }
+  ion-back-button{
+      --color: #fff;
+  }
+  p{
+      font-family: 'productsansmedium';
+      letter-spacing: 1px;
+      color: #3d905b;
+  }
+  img{
+    width: 84px;
+    display: inline-block;
+  }
+  .sub-head p{
+    margin: 10px 0; 
+    font-size: 14px;
+  }
+  .sub-head{
+    background: url(../../../../../assets/media/bg/15.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.text_de{
+    text-align: right;
+    color: #225fd0;
+    font-family: 'productsansregular';
+    font-size: 14px;
+    white-space: normal;
+}
+.marg{
+    margin-right: 10px;
+}
+.second_text{
+    font-size: 14px;
+    font-family: 'productsansregular';
+    color: #000;
+    white-space: normal;
+}
+ion-list-header{
+    font-size: 14px;
+    font-family: 'productsansmedium';
+    text-align: center;
+    text-transform: uppercase;
+    justify-content: center;
+}
+.sub_field{
+    padding: 0 17px;
+}
+ion-input{
+    border: 1px solid #225fd0;
+    font-size: 14px;
+    font-family: 'productsansregular';
+}
+.butt1{
+    padding: 20px 17px;
+}
+.add_button1{
+    --background: linear-gradient(to right, rgb(20, 136, 204), rgb(43, 50, 178));
+    --border-radius: 0;
+  }

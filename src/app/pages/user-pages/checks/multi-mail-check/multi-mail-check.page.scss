@@ -1,0 +1,235 @@
+.header-md:after{
+  background-image: none;
+}
+
+
+.head_tool{
+  --background: #4CAF50;
+}
+ion-menu-button{
+  --color: #fff;
+}
+.notif, .sear{
+  font-size: 30px;
+  margin-right: 5px;
+  color: #fff;
+}
+.sear{
+    margin-right: 10px;
+}
+ion-back-button{
+    --color: #fff;
+}
+img{
+  width: 93px;
+  display: inline-block;
+}
+.sub-head{
+  background: url(../../../../../assets/media/bg/15.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: 'productsansmedium';
+  color: #3d905b;
+  letter-spacing: 1px;
+
+}
+  .filbtns{
+    padding-right: 20px;
+    width: 100%;
+    text-align: right;
+    padding-bottom: 20px;
+  }
+  // #upload{
+  //   display: none;
+  // }
+  // .refil{
+  //     display: inline-block;
+  //     font-size: 14px;
+  //     padding: 7px 20px;
+  //     border-radius: 50px;
+  //     font-family: 'productsansmedium';
+  //     background: #44D962;
+  //     color: #000;
+  //     letter-spacing: 1px;
+  //     margin-right: 5px;
+  //     box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  // }
+  .refil_amt{
+    display: inline-block;
+    font-size: 14px;
+    color: #181818;
+    letter-spacing: 1px;
+    font-family: 'productsansbold';
+    // margin-left: 5px;
+    padding: 7px 20px;
+    border-radius: 50px;
+    background: #44D962;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  }
+  .card_no{
+    display: inline-block;
+    padding: 9px 14px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #00B856;
+    color: #fff;
+    font-size: 14px;
+    z-index: 2;
+  }
+  ion-content{
+    --padding-top: 30px;
+  }
+  ion-card{
+      margin-top:10px;
+  }
+  ion-item{
+      font-size: 14px;
+      font-family: 'productsansmedium';
+      width: 237px;
+  }
+  ion-list{
+      padding-top: 15px;
+  }
+  ion-card-header{
+      padding-left: 10px;
+  }
+  ion-label{
+    font-family: "productsansmedium" !important;
+    color: #4e4e4e !important;
+  }
+  ion-input{
+      text-align: right;
+  }
+  .last_input{
+      margin-bottom: 45px;
+  }
+  .card_footer{
+    width: 100%;
+    position: absolute;
+    background: #f5f5f5;
+    bottom: 0;
+    left: 0;
+    padding: 10px 15px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+  }
+  .footer_left{
+      display: flex;
+      color: #4e4e4e;
+      font-family: 'productsansmedium';
+      align-items: center;
+  }
+  .footer_right{
+      color: #4e4e4e;
+      font-family: 'productsansmedium';
+      display: block;
+}
+ion-checkbox{
+    margin-right: 5px;
+}
+.total, .total_ship{
+  text-align: right;
+  width: 100%;
+}
+.total ion-label{
+  color: #00B856 !important;
+  width: 100%;
+}
+.envelop{
+  width: 100%;
+}
+.ship_type{
+  width: 100%;
+  padding-top: 0;
+}
+.ship_type_item{
+  width: 100%;
+}
+.drpdwn_cstm_ship{
+  width: 100%;
+  background: #f5f5f5;
+  padding-top: 0;
+}
+.drpdwn_cstm_ship_cotnt{
+  width: 100%;
+  --background:none;
+}
+.list-ios{
+  margin:0;
+}
+.total_ship{
+  --background: none;
+}
+.total_ship ion-label{
+  color: #2376bd !important;
+  line-height: 25px;
+}
+ion-title{
+  padding-left: 15px;
+  text-align: left;
+  font-size: 11px;
+  font-family: 'productsansthin';
+  letter-spacing: 1px;
+  line-height: 15px;
+}
+ion-button{
+  font-family: "productsansmedium";
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.upper_z{
+  z-index: 2;
+}
+.fileinput{
+  display: flex;
+}
+.fileinput ion-input{
+  position: relative;
+  width: 21px;
+  height: 24px;
+  opacity: 0;
+  margin-left: 5px;
+}
+.fileinput ion-icon{
+  font-size: 24px;
+  position: absolute;
+  margin-left: 5px;
+}
+.doc_view{
+  position: relative;
+  font-size: 28px;
+  margin-left: 7px;
+  z-index: 10;
+}
+.attach_badge{
+  position: relative;
+  width: 16px;
+  height: 16px;
+  left: -10px;
+  top: -4px;
+  display: inline-flex;
+  font-size: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: 'productsansregular';
+}
+.view_badge{
+  position: relative;
+  width: 16px;
+  height: 16px;
+  left: -9px;
+  top: -7px;
+  display: inline-flex;
+  font-size: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: 'productsansregular';
+}
+.envelop ion-icon, .drpdwn_cstm_ship_cotnt ion-icon{
+  padding-left: 10px;
+}

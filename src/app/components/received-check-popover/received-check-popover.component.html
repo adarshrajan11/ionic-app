@@ -1,0 +1,8 @@
+<ion-list>
+  <!-- <ion-list-header>MORE...</ion-list-header> -->
+  <!-- <ion-item button><ion-icon name="create"></ion-icon>Edit</ion-item>
+  <ion-item button><ion-icon name="trash"></ion-icon>Delete</ion-item>
+  <ion-item button><ion-icon name="mail"></ion-icon>Mail</ion-item> -->
+  <!-- <ion-item button  ><ion-icon name="mail" ></ion-icon>Email</ion-item> -->
+  <ion-item lines="none" button [disabled]="((checkStatus!=12)&&(checkStatus!=13)&&(checkStatus!=20)&&(checkStatus!=21))||ref.disablePrintAfterPrinted[checkId]"  (click)="ref.printCheck(checkId);ref.popoverController.dismiss()" ><ion-icon name="print"></ion-icon>Print</ion-item>
+</ion-list>

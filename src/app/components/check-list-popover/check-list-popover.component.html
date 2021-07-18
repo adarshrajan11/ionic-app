@@ -1,0 +1,14 @@
+<ion-list>
+  <!-- <ion-list-header>MORE...</ion-list-header> -->
+  <!-- <ion-item button><ion-icon name="create"></ion-icon>Edit</ion-item>  -->
+  <ion-item lines="none" [disabled]="checkStatus==14||checkStatus==20||checkStatus==21||checkStatus==22" button routerDirection="forward" routerLink="tabs/edit-check/{{checkId}}"  (click)="ref.popoverController.dismiss()"><ion-icon name="create"></ion-icon>Edit</ion-item>
+  <ion-item  lines="none" button (click)="ref.cloneCheck(checkId)"  ><ion-icon name="copy" ></ion-icon>Clone this check</ion-item>
+  <ion-item lines="none" button [disabled]="ref.checkDeleting"  (click)="ref.presentCheckDeleteConfirm(checkId);">
+    <ion-icon  name="trash"></ion-icon> <ion-label> {{ ref.checkDeleting ? "Deleting..." : "Delete" }}   </ion-label>
+  </ion-item>
+  <ion-item  [disabled]="checkStatus==2"  button (click)="ref.presentCheckVoidConfirm(checkId);" ><ion-icon name="close" ></ion-icon>Void</ion-item>
+
+  <ion-item lines="none" button routerDirection="forward" (click)="ref.onClickEmail(check); ref.popoverController.dismiss()"><ion-icon name="mail" ></ion-icon>Email</ion-item>
+  <ion-item  button routerDirection="forward" (click)="ref.onClickMail(check);  ref.popoverController.dismiss()"><ion-icon name="mail" ></ion-icon>Mail</ion-item>
+  <ion-item lines="none" button [disabled]="checkStatus==35||checkStatus==37" (click)="ref.printCheck(checkId);ref.popoverController.dismiss()"  ><ion-icon name="print"></ion-icon>Print</ion-item>
+</ion-list>

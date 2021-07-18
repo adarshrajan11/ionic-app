@@ -1,0 +1,113 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+<div class="sub-head">
+  <p *ngIf="!editMode">Create Check</p>
+  <p *ngIf="editMode">Edit Check</p>
+</div>
+
+<ion-content>
+  <form [formGroup]="newCheckForm">
+    <!-- <div class="add_button">
+      <ion-button class="add_button1" routerLink='/add-payee' expand="full">New User</ion-button>
+    </div> -->
+    <!-- <div class="whole_content"> -->
+      <!-- <ion-list class="label_border">
+        <ion-label class="">Details</ion-label >
+      </ion-list> -->
+
+      <ion-list class="list_border">
+        <ion-item>
+          <ion-label>Bank Account<ion-text color="danger">*</ion-text></ion-label>
+          <ionic-selectable style="font-size: 13px; height:40px;" formControlName="bankAccountId" item-content [items]="banks"
+          placeholder="--Select Bank Account--" itemValueField="id" itemTextField="name" [canSearch]="true"
+          (onChange)="bankChange($event)">
+          </ionic-selectable>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Check No</ion-label>
+          <ion-input type="number" placeholder="Check Number" formControlName="checkNumber"></ion-input>
+          <ion-label>Date<ion-text color="danger">*</ion-text></ion-label>
+          <ion-datetime placeholder="--Select Date--" formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Payee Name<ion-text color="danger">*</ion-text></ion-label>
+          <ionic-selectable style="font-size: 13px;" formControlName="payeeId" item-content [items]="payees" placeholder="--Select Payee--"
+            itemValueField="id" itemTextField="name" [canSearch]="true" (onSearch)="searchPayees($event)"
+            (onChange)="portChange($event)">
+          </ionic-selectable>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Amount<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input inputmode="decimal" type="number" (keypress)="onKeyPressAmount($event)"  placeholder="Amount" formControlName="amount" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Memo</ion-label>
+          <ion-input type="text" placeholder="Memo" formControlName="memo"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="extr_mar">
+          <ion-button size="small" color="primary" (click)="showMore=!showMore;">{{ showMore==true ? 'Hide' : 'More' }}</ion-button>
+        </ion-item>
+
+
+
+        <div class="hide_show" *ngIf="showMore">
+          <ion-item>
+          <ion-label>Category</ion-label>
+          <ionic-selectable style="font-size: 13px;" formControlName="categoryId" item-content [items]="categories"
+          placeholder="--Select Category--" itemValueField="id" itemTextField="name" [canSearch]="true"
+          (onChange)="onCategoryChange($event)"  (onSearch)="onSearchCategory($event)">
+            </ionic-selectable>
+          </ion-item>
+
+          <ion-item>
+          <ion-label>Account Number</ion-label>
+          <ion-input type="text" placeholder="Acc# if any" formControlName="accountNumber"></ion-input>
+          </ion-item>
+
+          <ion-item>
+          <ion-label>Invoice Number</ion-label>
+          <ion-input type="text" placeholder="Inv# if any" formControlName="invoiceNumber"></ion-input>
+          </ion-item>
+
+          <!-- <ion-item>
+          <ion-label position="stacked">Comment</ion-label>
+          <ion-input type="text" formControlName="note"></ion-input>
+          </ion-item> -->
+
+          <ion-item lines="none" class="extr_mar">
+            <ion-label>Print Without</ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-checkbox formControlName="checkboxAmount" (ionChange)="onChangeNoAmount($event)"></ion-checkbox>
+            <ion-label>Amount</ion-label>
+
+            <ion-checkbox formControlName="checkboxSign" (ionChange)="onChangeNoSignature($event)"></ion-checkbox>
+            <ion-label>Sign</ion-label>
+
+            <ion-checkbox formControlName="checkboxPayee" (ionChange)="onChangeNoPayee($event)"></ion-checkbox>
+            <ion-label>Payee</ion-label>
+
+            <ion-checkbox formControlName="checkboxDate" (ionChange)="onChangeNoDate($event)"></ion-checkbox>
+            <ion-label>Date</ion-label>
+          </ion-item>
+        </div>
+
+      </ion-list>
+      <ion-button *ngIf="editMode" expand="full" (click)="updateCheck()" [disabled]="loading">{{ loading ? "Saving..." : "Update" }}</ion-button>
+      <ion-toolbar color="primary" *ngIf="!editMode">
+        <ion-buttons>
+          <ion-button *ngIf="!editMode" (click)="saveCheck()" [disabled]="loading">{{ loading ? "Saving..." : "Save" }}</ion-button>
+          <ion-button  *ngIf="!editMode"  (click)="emailCheck()">Email</ion-button>
+          <ion-button *ngIf="!editMode"  (click)="mailCheck()">Mail</ion-button>
+          <ion-button *ngIf="!editMode"   (click)="newCheckPrint()">Print</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+  </form>
+</ion-content>

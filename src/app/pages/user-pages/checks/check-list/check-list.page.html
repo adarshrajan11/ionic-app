@@ -1,0 +1,182 @@
+<ion-header>
+  <app-header></app-header>
+  <!-- <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center   >
+      <img src="../../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+    <ion-buttons slot="end">
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar> -->
+</ion-header>
+<div class="sub-head">
+  <p>Check List</p>
+</div>
+
+<ion-toolbar class="ion_toolbar_under_head">
+  <div class="top_bar_tools">
+    <ion-tab-button (click)="printCheck()">
+      <ion-icon name="Print"></ion-icon>
+      <ion-label>Print</ion-label>
+    </ion-tab-button>
+
+   
+     <ion-tab-button  (click)="onClickMultipleMail()" >
+      <ion-icon name="mail"></ion-icon>
+      <ion-label>Mail</ion-label>
+    </ion-tab-button> 
+
+    <ion-tab-button (click)="onClickMultipleEmail()">
+      <ion-icon name="mail-open"></ion-icon>
+      <ion-label>Email</ion-label>
+    </ion-tab-button>
+
+    
+    <!-- <ion-tab-button >
+      <ion-icon name="bookmark"></ion-icon>
+      <ion-label>ACH</ion-label>
+    </ion-tab-button> -->
+  </div>
+</ion-toolbar>
+<ion-toolbar>
+  <div class="search_filter_group">
+    <ion-searchbar (ionChange)="searchCheck($event)"   debounce="300" [(ngModel)]="searchQuery" animated></ion-searchbar>
+    <div class="filter_selct_cls">
+      <ion-select [(ngModel)]="filterStatus" (ionChange)="loadChecks()" class="" interface="popover" placeholder="Filter">
+        <ion-select-option value="">All</ion-select-option>
+        <ion-select-option value="void">Void</ion-select-option>
+        <ion-select-option value="new">New</ion-select-option>
+        <ion-select-option value="printed">Printed</ion-select-option>
+        <ion-select-option value="mailed">Mailed</ion-select-option>
+        <ion-select-option value="eprinted">E-printed</ion-select-option>
+        <ion-select-option value="approval-required">Approval required</ion-select-option>
+        <ion-select-option value="approved">Approved</ion-select-option>
+        <ion-select-option value="rejected">Rejected</ion-select-option>
+        <ion-select-option lines="none" value="emailed">Emailed</ion-select-option>
+      </ion-select>
+    </div>  
+  </div>
+</ion-toolbar>
+
+<ion-content>
+  <ion-spinner  name="bubbles" *ngIf="showLoadingSpinner"></ion-spinner>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content ></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngIf="checks.length==0&&!showLoadingSpinner" >
+      <ion-label style="text-align: center;">No items.</ion-label>
+   </ion-item>
+
+     <!-- Sliding item with text options on both sides -->
+     <ion-item-sliding *ngFor="let check of checks;let i =index">
+      <ion-item-options side="start" *ngIf="!expandItemControls[i]">
+
+        <ion-item-option (click)="onClickMail(check)" >
+          <ion-icon class="slide-opt" name="send"></ion-icon>
+          Mail
+        </ion-item-option>
+
+        <ion-item-option color="danger" (click)="onClickEmail(check)">
+          <ion-icon class="slide-opt"  name="mail-open"></ion-icon>
+          Email
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item [attr.lines]="expandItemControls[i] ? 'none' :''">
+        <ion-checkbox (ionChange)="multiSelectHandler(check.id, $event,check)"  color="primary"></ion-checkbox>
+        <ion-label (click)="expandItem(i)">
+          <div class="sub_details">
+            <p class="check_amt">{{ check?.amount | currency  }} 
+                <span *ngIf="check.status==2||check.status==0||check.status==4||check.status==5||check.status==6||check.status==7||check.status==11||check.status==12||check.status==14||check.status==22||check.status==21||check.status==20||check.status==35||check.status==37||check.status==36" style="font-weight: 400; font-size: 12px;">
+                 (<span *ngIf="check.status==2" style="color:red">Void</span>
+                  <span *ngIf="check.status==0" style="color:rgb(61, 109, 241)"><b>New</b></span>
+                  <span *ngIf="check.status==4">Printing</span>
+                  <span *ngIf="check.status==5">Printed</span>
+                  <span *ngIf="check.status==6">Printed</span>
+                  <span *ngIf="check.status==7||check.status==8">Mailed</span>
+                  <span *ngIf="check.status==11">Refunded</span>
+                  <span *ngIf="check.status==12||check.status==13">E-mailed</span>
+                  <span *ngIf="check.status==14" style="color:green">E-printed</span>
+                  <span *ngIf="check.status==20" style="color:green">Req-Approved</span>
+                  <span *ngIf="check.status==21" style="color:green">Req-Approved</span>
+                  <span *ngIf="check.status==22" style="color:green">Req-Printed</span>
+                  <span *ngIf="check.status==36" style="color:green">Approved</span>
+                  <span *ngIf="check.status==35" style="color:green">AR</span>
+                  <span *ngIf="check.status==37" style="color:red">Rejected</span>)
+              </span>
+              <span>|</span><span class="payee_name"> {{ check.payeeName }}</span>
+             </p>
+            <p style="display: block;" class="check_dat">
+               {{ check?.bankAccountNickName!='' ? check?.bankAccountNickName : check?.bankAccountName }}
+                <span>|</span> {{ check.checkSerialNo }}
+            </p>
+           
+          </div>
+          <!-- <div class="sub_details">
+            <p class="check_paye">Payee Name</p>
+            <p class="check_accnt">Account Name</p>
+          </div> -->
+        </ion-label>
+          <!-- <ion-label>Primary Note</ion-label> -->
+          <ion-buttons slot="end">
+            <ion-button (click)=presentPopover($event,check);>
+              <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+          </ion-buttons>  
+      </ion-item>
+
+      <ion-item *ngIf="expandItemControls[i]">
+        <ion-label>
+          <div class="sub_details_expand">
+            <p class="check_dat">Created By : <span class="lab_name">{{ check.checkCreatedByName}}</span></p>
+            <p class="check_dat">Date : <span class="lab_name">{{ check.date}}</span></p>
+          </div>
+          <div class="sub_details_expand">
+            <p class="check_dat">Payee : <span class="lab_name">{{ check.payeeName}}</span></p>
+            <p class="check_dat">Account : <span class="lab_name">{{ check.bankAccountName}}</span></p>
+          </div>
+          <div class="sub_details_expand">
+            <p class="check_dat">Memo : <span class="lab_name">{{ check.memo}}</span></p>
+          </div>
+          <div class="sub_details_expand_icon">
+         
+            <a class="sub_details_expand_badge" (click)="openCheckCommentModal(check.id)">Comments</a>
+            <a class="sub_details_expand_badge" (click)="openCheckAttachementModal(check.id)">Attachments</a>
+            <a class="sub_details_expand_badge" (click)="openCheckActivityModal(check.id)" >activity</a>
+          </div>
+          <!-- <div class="sub_details_expand">
+            <ion-icon name="document-attach-outline"></ion-icon>
+            <ion-icon name="pricetags"></ion-icon>
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </div> -->
+        </ion-label> 
+       </ion-item>  
+    
+      <ion-item-options side="end" *ngIf="!expandItemControls[i]">
+        <ion-item-option color="success" expandable routerLink="/view-check/{{check.id}}" >
+          <ion-icon class="slide-opt" name="eye"></ion-icon>
+          View
+        </ion-item-option >
+        <ion-item-option [disabled]="check.status==35" color="tertiary" expandable (click)="printCheck(check.id)">
+          <ion-icon class="slide-opt" name="print"></ion-icon>
+          Print
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)"  *ngIf="checks.length>0">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more checks..">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+

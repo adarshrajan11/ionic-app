@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar class="head_tool">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div text-center   >
+      <img src="../../../../../assets/media/bg/logo_ocw.png"/>
+    </div>
+    <ion-buttons slot="end">
+      <ion-icon routerLink='/notifications' class="notif" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <div class="sub-head">
+    <p>Mail Check Confirmation</p>
+  </div>
+
+<ion-content >
+  <!-- <div class="email_content">
+  <ion-radio-group>
+    <div class="single_data">
+      <ion-list class="single_lab">
+        <ion-radio class="radio_box_re" slot="start" value="griff"></ion-radio>
+        <ion-label class="lab_head">First Class(?)</ion-label>
+      </ion-list>
+      <ion-list class="text_list">
+        <ion-text>$3.50</ion-text>
+      </ion-list>
+    </div>
+    <div class="single_data">
+      <ion-list class="single_lab">
+        <ion-radio class="radio_box_re" slot="start" value="griff"></ion-radio>
+        <ion-label class="lab_head">First Class(?)</ion-label>
+      </ion-list>
+      <ion-list class="text_list">
+        <ion-text>$3.50</ion-text>
+      </ion-list>
+    </div>
+  </ion-radio-group>
+    <ion-button class="add_button1" routerLink='/'>Send Email</ion-button>
+  </div> -->
+
+  <ion-list *ngIf="mailOptions.mailTypes">
+    <ion-radio-group>
+      <ion-list-header>
+        Select Mail type
+      </ion-list-header>
+      <ion-item  *ngFor="let mailType of mailOptions.mailTypes; let last = last; let i=index;">
+        <ion-radio class="marg" [checked]="i==0" [(ngModel)]="mailType.id"   (click)="onChangeMailType($event,i)" ></ion-radio>
+        <ion-label class="second_text">{{mailType?.name}}</ion-label>
+        <ion-label class="text_de">	{{ mailType?.amount | currency}}</ion-label>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <ion-list *ngIf="mailOptions.checkPapers">
+    <ion-radio-group>
+      <ion-list-header>
+        Select Check Paper
+      </ion-list-header>
+      <ion-item  *ngFor="let checkPaper of mailOptions.checkPapers; let last = last;let i=index;">
+        <ion-radio class="marg" [checked]="i==0"  [(ngModel)]="checkPaper.id" (click)="onChangeCheckPaper($event,i)"></ion-radio>
+        <ion-label class="second_text">{{checkPaper?.name}}	</ion-label>
+        <ion-label class="text_de">	{{ checkPaper?.amount | currency}}</ion-label>
+      </ion-item>
+      <!-- <ion-item lines='none'>
+        <ion-radio class="marg" value="7"></ion-radio>
+        <ion-label class="second_text">Hollogram Check Paper</ion-label>
+        <ion-label class="text_de">	$0.50</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-radio class="marg" value="8"></ion-radio>
+        <ion-label class="second_text">Ultra Hollogram Check Paper</ion-label>
+        <ion-label class="text_de">	$0.99</ion-label>
+      </ion-item> -->
+    </ion-radio-group>
+  </ion-list>
+  <ion-list *ngIf="mailOptions.informOptions">
+    <ion-radio-group>
+      <ion-list-header>
+        Inform Payee
+      </ion-list-header>
+      <ion-item lines='none' *ngIf="mailOptions.informOptions">
+        <ion-checkbox class="marg" (ionChange)="onChangeSmsInform($event)" [(ngModel)]="smsInform"></ion-checkbox>
+        <ion-label class="second_text">{{ mailOptions.informOptions[0]?.name }}</ion-label>
+        <ion-label class="text_de">	{{ mailOptions.informOptions[0]?.amount | currency }}</ion-label>
+      </ion-item>
+      <ion-list class="sub_field">
+        <ion-input type="tel" placeholder="Phone Number" [(ngModel)]="payeePhone"></ion-input>
+      </ion-list>
+      <ion-item lines='none'>
+        <ion-checkbox checked class="marg" [(ngModel)]="emailInform"></ion-checkbox>
+        <ion-label class="second_text">Notify Receiver by Email</ion-label>
+        <ion-label class="text_de">Free</ion-label>
+      </ion-item>
+      <ion-list class="sub_field">
+        <ion-input type="text"  [(ngModel)]="payeeEmail" placeholder="Email Id"></ion-input>
+      </ion-list>
+      <ion-item>
+        <ion-label class="second_text"><b>Total</b></ion-label>
+        <ion-label class="text_de"><b>{{ totalAmount}}</b></ion-label>
+      </ion-item>
+    </ion-radio-group>
+    <div class="butt1">
+      <ion-button class="add_button1" (click)="createMailCheck()">Send Mail</ion-button>
+    </div>
+  </ion-list>
+</ion-content>
